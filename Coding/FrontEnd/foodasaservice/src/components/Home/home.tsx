@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import React from 'react';
+import { connect } from 'react-redux';
 
-interface HomeState {
-  message: string;
-}
-export default class Home extends Component<{}, HomeState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: 'HOME PAGE'
-    };
-  }
-  render() {
-    return (
-      <div>
-        <Container>
-          <h3>{this.state.message}</h3>
-        </Container>
-      </div>
-    );
-  }
-}
+const Home = props => {
+  return (
+    <div>
+      <h3>{props.dishes[0].name}</h3>
+      <h3>{props.dishes[0].price}</h3>
+      <h3>{props.dishes[0].chef}</h3>
+    </div>
+  );
+};
+
+const mapStateToProps = (state: any) => {
+  return {
+    dishes: state.dish
+  };
+};
+
+export default connect(mapStateToProps)(Home);
