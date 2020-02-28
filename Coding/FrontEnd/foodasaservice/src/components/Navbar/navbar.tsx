@@ -18,7 +18,7 @@ const NavbarComponent = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div style={{ backgroundColor: '#e0e0e0' }}>
       <Navbar color='light' light expand='md'>
         <img src={navIcon} alt='NavIcon' style={{ height: '50px' }} />
         <NavbarBrand className='brand' href='/'>
