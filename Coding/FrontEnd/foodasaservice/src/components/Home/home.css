@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+}
+.whiteBack {
+  position: absolute;
+  background-color: #f8f9fa !important;
+  height: 11em;
+  width: 100vw;
+}
+.HomeDish {
+  width: 100vw;
+}
+.searchBar {
+  position: absolute;
+  left: 30vw;
+  top: 2vh;
+  width: 40em;
+}

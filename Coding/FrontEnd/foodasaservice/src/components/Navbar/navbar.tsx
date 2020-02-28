@@ -12,7 +12,7 @@ import {
 
 import navIcon from 'assests/images/navIcon.png';
 
-const NavbarComponent = props => {
+const NavbarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -40,7 +40,12 @@ const NavbarComponent = props => {
           </Nav>
 
           <NavbarText>
-            <button className='btn btn-success'>Login</button>
+            <button
+              className='btn btn-success'
+              style={{ fontFamily: 'monospace' }}
+            >
+              Login
+            </button>
           </NavbarText>
         </Collapse>
       </Navbar>
