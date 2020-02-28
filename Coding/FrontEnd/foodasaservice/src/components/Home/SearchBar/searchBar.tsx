@@ -7,7 +7,7 @@ const SearchBar = () => {
       <form>
         <div className='inner-form'>
           <fieldset>
-            <legend>Discover the Amazing City</legend>
+            <legend>Discover the Amazing Dishes</legend>
           </fieldset>
           <div className='input-field first-wrap'>
             <input
