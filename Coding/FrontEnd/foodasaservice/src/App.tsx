@@ -7,7 +7,9 @@ import Navbar from 'components/Navbar/navbar';
 export function App() {
   return (
     <div className='App'>
-      <Navbar />
+      <div className='navbar'>
+        <Navbar />
+      </div>
       <Home />
     </div>
   );
