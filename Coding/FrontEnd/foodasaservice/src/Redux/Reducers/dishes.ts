@@ -1,18 +1,40 @@
-import { dishStateItems } from 'Types/Dishes';
+// import { dishStateItems } from 'Types/Dishes';
+import * as ActionTypes from 'Redux/Actions/actions';
 
-const dishesState: dishStateItems[] = [
-  {
-    name: 'Hyda',
-    price: 2,
-    chef: 'Gunjan'
+export const Dish = (
+  state = {
+    Dishes: [],
+    ErrorMessage: null,
+    IsLoading: true
   },
-  {
-    name: 'Hyda1',
-    price: 3,
-    chef: 'Gunjn1'
-  }
-];
+  action
+) => {
+  switch (action.type) {
+    case ActionTypes.FETCH_TOP_DISHES:
+      return {
+        ...state,
+        ErrorMessage: null,
+        Dishes: action.payload,
+        IsLoading: false
+      };
 
-export const Dish = (state: dishStateItems[] = dishesState, action) => {
-  return state;
+    case ActionTypes.TOP_DISHES_LOADING_FAILED:
+      return {
+        ...state,
+        ErrorMessage: action.payload,
+        Dishes: [],
+        IsLoading: action.payload
+      };
+
+    case ActionTypes.DISHES_LOADING:
+      return {
+        ...state,
+        ErrorMessage: null,
+        Dishes: [],
+        IsLoading: action.payload
+      };
+
+    default:
+      return state;
+  }
 };
