@@ -4,23 +4,25 @@ import baseURL from 'axios-config';
 
 export const fetchTopDishes = () => dispatch => {
   dispatch(dishesLoading(true));
-  return axios
-    .get(baseURL + '/Dishes.json')
-    .then(
-      (response: AxiosResponse) => {
-        return response;
-      },
-      error => {
-        var errMess = new Error(error.message);
-        throw errMess;
-      }
-    )
-    .then(response => {
-      dispatch(addDishes(response.data), dispatch(dishesLoading(false)));
-    })
-    .catch(error => {
-      dispatch(dishesFailed(error.message), dispatch(dishesLoading(false)));
-    });
+  return setInterval(() => {
+    axios
+      .get(baseURL + '/Dishes.json')
+      .then(
+        (response: AxiosResponse) => {
+          return response;
+        },
+        error => {
+          var errMess = new Error(error.message);
+          throw errMess;
+        }
+      )
+      .then(response => {
+        dispatch(addDishes(response.data), dispatch(dishesLoading(false)));
+      })
+      .catch(error => {
+        dispatch(dishesFailed(error.message), dispatch(dishesLoading(false)));
+      });
+  }, 1500);
 };
 
 export const addDishes = dishes => ({

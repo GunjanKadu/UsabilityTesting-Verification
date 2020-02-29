@@ -4,23 +4,25 @@ import baseURL from 'axios-config';
 
 export const fetchTopCooks = () => dispatch => {
   dispatch(chefsLoading(true));
-  return axios
-    .get(baseURL + '/Chefs.json')
-    .then(
-      (response: AxiosResponse) => {
-        return response;
-      },
-      error => {
-        var errMess = new Error(error.message);
-        throw errMess;
-      }
-    )
-    .then(response => {
-      dispatch(addChefs(response.data), dispatch(chefsLoading(false)));
-    })
-    .catch(error => {
-      dispatch(chefsFailed(error.message), dispatch(chefsLoading(false)));
-    });
+  return setInterval(() => {
+    axios
+      .get(baseURL + '/Chefs.json')
+      .then(
+        (response: AxiosResponse) => {
+          return response;
+        },
+        error => {
+          var errMess = new Error(error.message);
+          throw errMess;
+        }
+      )
+      .then(response => {
+        dispatch(addChefs(response.data), dispatch(chefsLoading(false)));
+      })
+      .catch(error => {
+        dispatch(chefsFailed(error.message), dispatch(chefsLoading(false)));
+      });
+  }, 1500);
 };
 
 export const addChefs = chef => ({
