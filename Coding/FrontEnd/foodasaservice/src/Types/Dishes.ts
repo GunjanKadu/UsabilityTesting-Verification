@@ -1,5 +1,15 @@
+export interface dishItems {
+  Category: string;
+  Cuisine: string;
+  Name: string;
+  Rating: number | null;
+}
+
 export interface dishStateItems {
-  name: string;
-  price: number;
-  chef: string;
+  // Category: string;
+  // Cuisine: string;
+  // Name: string;
+  // Rating: number | null;
+  Dishes: dishItems[];
+  ErrorMessage: string;
 }

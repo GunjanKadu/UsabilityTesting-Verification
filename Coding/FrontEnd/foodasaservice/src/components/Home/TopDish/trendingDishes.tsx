@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Card,
   CardImg,
@@ -8,10 +8,15 @@ import {
   CardSubtitle,
   Button
 } from 'reactstrap';
-
+import { fetchTopDishes } from 'Redux/ActionCreators/Dishes';
+import { connect } from 'react-redux';
 import './trendingDishes.css';
 
 const TrendingDishes = props => {
+  useEffect(() => {
+    props.fetchTopDishes();
+    console.log(props.dishes);
+  }, []);
   return (
     <Card>
       <CardImg
@@ -32,5 +37,17 @@ const TrendingDishes = props => {
     </Card>
   );
 };
+const mapStateToProps = (state: any) => {
+  return {
+    dishes: state.dish
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchTopDishes: () => {
+      dispatch(fetchTopDishes());
+    }
+  };
+};
 
-export default TrendingDishes;
+export default connect(mapStateToProps, mapDispatchToProps)(TrendingDishes);
