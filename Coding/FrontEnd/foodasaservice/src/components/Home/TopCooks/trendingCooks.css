@@ -1,0 +1,20 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  background-color: honeydew;
+}
+.image {
+  margin-left: 1em;
+  position: relative;
+  left: 1%;
+  top: -1em;
+  border-radius: 100px;
+  width: 35%;
+}
+.text {
+  position: absolute;
+  top: 40%;
+  left: 42%;
+  width: 50%;
+  border-left: 2px solid grey;
+}
