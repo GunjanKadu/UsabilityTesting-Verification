@@ -4,7 +4,7 @@ import baseURL from 'axios-config';
 
 export const fetchTopDishes = () => dispatch => {
   dispatch(dishesLoading(true));
-  return setInterval(() => {
+  return setTimeout(() => {
     axios
       .get(baseURL + '/Dishes.json')
       .then(

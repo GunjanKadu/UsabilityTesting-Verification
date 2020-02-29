@@ -4,7 +4,7 @@ import baseURL from 'axios-config';
 
 export const fetchTopCooks = () => dispatch => {
   dispatch(chefsLoading(true));
-  return setInterval(() => {
+  return setTimeout(() => {
     axios
       .get(baseURL + '/Chefs.json')
       .then(
