@@ -6,9 +6,11 @@ export const fetchTopCooks = () => dispatch => {
   dispatch(chefsLoading(true));
   return setTimeout(() => {
     axios
-      .get(baseURL + '/Chefs.json')
+      .get(baseURL + '/homepage')
       .then(
         (response: AxiosResponse) => {
+          console.log(response);
+
           return response;
         },
         error => {
@@ -17,7 +19,7 @@ export const fetchTopCooks = () => dispatch => {
         }
       )
       .then(response => {
-        dispatch(addChefs(response.data), dispatch(chefsLoading(false)));
+        dispatch(addChefs(response.data.chefs), dispatch(chefsLoading(false)));
       })
       .catch(error => {
         dispatch(chefsFailed(error.message), dispatch(chefsLoading(false)));

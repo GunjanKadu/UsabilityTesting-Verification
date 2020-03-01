@@ -6,9 +6,10 @@ export const fetchTopDishes = () => dispatch => {
   dispatch(dishesLoading(true));
   return setTimeout(() => {
     axios
-      .get(baseURL + '/Dishes.json')
+      .get(baseURL + '/homepage')
       .then(
         (response: AxiosResponse) => {
+          console.log(response);
           return response;
         },
         error => {
@@ -17,7 +18,10 @@ export const fetchTopDishes = () => dispatch => {
         }
       )
       .then(response => {
-        dispatch(addDishes(response.data), dispatch(dishesLoading(false)));
+        dispatch(
+          addDishes(response.data.dishes),
+          dispatch(dishesLoading(false))
+        );
       })
       .catch(error => {
         dispatch(dishesFailed(error.message), dispatch(dishesLoading(false)));
