@@ -1,32 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Card,
   CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
-  Button,
   Spinner
 } from 'reactstrap';
 import { fetchTopDishes } from 'Redux/ActionCreators/Dishes';
+import { fetchCuisines } from 'Redux/ActionCreators/Cuisines';
 import { connect } from 'react-redux';
 import './trendingDishes.css';
 
 const TrendingDishes = props => {
+  //On Mounting Fetch States
   useEffect(() => {
     props.fetchTopDishes();
+    props.fetchCuisines();
   }, []);
 
+  //Global Dishes
   const dishes = props.dishes.Dishes;
+
+  //Global Cuisines Array
+  const cuisines = props.cuisines.Cuisine;
 
   const RenderDishes = () => {
     const renderDishArray = dishes.map(item => {
+      // Cuisines Array in Each Dish
+      const cuisinesInEachDish = item.cuisine;
+
+      //Mapping Cuisines of each Dish with the Global Cuisines Array
+      const cuisineOfEachDish = cuisinesInEachDish.map(element => {
+        const dishCuisine = cuisines.find(cuisineElement => {
+          return element === cuisineElement.id;
+        });
+        //Returning Array of Mapped Global Cuisines Array with Cuisines Array  in Each Dish
+        return dishCuisine;
+      });
+
+      //Rendering Each Cuisines for Dish
+      const CuisinesNames = () => {
+        return cuisineOfEachDish.map(name => {
+          return (
+            <span>
+              {name.name} {''} {''}{' '}
+            </span>
+          );
+        });
+      };
+
       return (
         <div key={item.id}>
           <Card className='card'>
             <CardBody>
               <CardTitle>{item.dish_name}</CardTitle>
-              <CardSubtitle>Indian</CardSubtitle>
+              <CardSubtitle>
+                <CuisinesNames />
+              </CardSubtitle>
               <hr />
             </CardBody>
             <img
@@ -69,7 +100,8 @@ const TrendingDishes = props => {
 const mapStateToProps = (state: any) => {
   return {
     dishes: state.dish,
-    chefs: state.chef
+    chefs: state.chef,
+    cuisines: state.cuisine
   };
 };
 
@@ -77,6 +109,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchTopDishes: () => {
       dispatch(fetchTopDishes());
+    },
+    fetchCuisines: () => {
+      dispatch(fetchCuisines());
     }
   };
 };
