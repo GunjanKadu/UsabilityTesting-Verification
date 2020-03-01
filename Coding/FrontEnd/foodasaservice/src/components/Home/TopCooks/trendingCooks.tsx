@@ -17,20 +17,15 @@ const TrendingCooks = props => {
     props.fetchTopCooks();
     console.log(props.dishes.IsLoading);
   }, []);
-  return (
-    <div>
-      {props.chefs.IsLoading ? (
-        <Spinner
-          style={{ width: '5rem', height: '5rem' }}
-          type='grow'
-          color='info'
-        />
-      ) : (
-        <div>
-          <h3>Featured Cooks</h3>
+  const chefs = props.chefs.Chefs;
+
+  const RenderCooks = () => {
+    const renderCookArray = chefs.map(item => {
+      return (
+        <div key={item.id}>
           <Card className='card'>
             <CardBody>
-              <CardTitle>Rajma</CardTitle>
+              <CardTitle>{item.chef_name}</CardTitle>
               <CardSubtitle>Indian</CardSubtitle>
               <hr />
             </CardBody>
@@ -42,11 +37,29 @@ const TrendingCooks = props => {
             />
             <CardBody className='text'>
               <CardText>
+                {' '}
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </CardText>
             </CardBody>
           </Card>
+        </div>
+      );
+    });
+    return <>{renderCookArray}</>;
+  };
+  return (
+    <div>
+      {props.chefs.IsLoading ? (
+        <Spinner
+          style={{ width: '5rem', height: '5rem' }}
+          type='grow'
+          color='info'
+        />
+      ) : (
+        <div>
+          <h3>Featured Chefs</h3>
+          <RenderCooks />
         </div>
       )}
     </div>

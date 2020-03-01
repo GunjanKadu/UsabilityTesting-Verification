@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Card,
   CardText,
@@ -16,20 +16,16 @@ const TrendingDishes = props => {
   useEffect(() => {
     props.fetchTopDishes();
   }, []);
-  return (
-    <div>
-      {props.dishes.IsLoading ? (
-        <Spinner
-          style={{ width: '5rem', height: '5rem' }}
-          type='grow'
-          color='info'
-        />
-      ) : (
-        <div>
-          <h3>Featured Dishes</h3>
+
+  const dishes = props.dishes.Dishes;
+
+  const RenderDishes = () => {
+    const renderDishArray = dishes.map(item => {
+      return (
+        <div key={item.id}>
           <Card className='card'>
             <CardBody>
-              <CardTitle>Rajma</CardTitle>
+              <CardTitle>{item.dish_name}</CardTitle>
               <CardSubtitle>Indian</CardSubtitle>
               <hr />
             </CardBody>
@@ -41,11 +37,29 @@ const TrendingDishes = props => {
             />
             <CardBody className='text'>
               <CardText>
+                {' '}
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </CardText>
             </CardBody>
           </Card>
+        </div>
+      );
+    });
+    return <>{renderDishArray}</>;
+  };
+  return (
+    <div>
+      {props.dishes.IsLoading ? (
+        <Spinner
+          style={{ width: '5rem', height: '5rem' }}
+          type='grow'
+          color='info'
+        />
+      ) : (
+        <div>
+          <h3>Featured Dishes</h3>
+          <RenderDishes />
         </div>
       )}
     </div>
