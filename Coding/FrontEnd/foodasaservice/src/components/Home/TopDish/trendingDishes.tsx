@@ -5,7 +5,9 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  Spinner
+  Spinner,
+  Badge,
+  Button
 } from 'reactstrap';
 import { fetchTopDishes } from 'Redux/ActionCreators/Dishes';
 import { fetchCuisines } from 'Redux/ActionCreators/Cuisines';
@@ -43,7 +45,7 @@ const TrendingDishes = props => {
       const CuisinesNames = () => {
         return cuisineOfEachDish.map(name => {
           return (
-            <span>
+            <span key={name.id}>
               {name.name} {''} {''}{' '}
             </span>
           );
@@ -54,7 +56,11 @@ const TrendingDishes = props => {
         <div key={item.id}>
           <Card className='card'>
             <CardBody>
-              <CardTitle>{item.dish_name}</CardTitle>
+              <CardTitle className='dishCardTitle'>{item.dish_name} </CardTitle>
+              <Badge color='danger' style={{ color: 'white' }}>
+                {item.likes} Fingers Licked
+              </Badge>
+
               <CardSubtitle>
                 <CuisinesNames />
               </CardSubtitle>

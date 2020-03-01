@@ -5,7 +5,6 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  Button,
   Spinner
 } from 'reactstrap';
 import { fetchTopCooks } from 'Redux/ActionCreators/Chefs';
