@@ -15,7 +15,11 @@ const composeEnhancers =
 
 export const ConfigureStore = () => {
   const store = createStore(
-    combineReducers({ dish: Dish, chef: Chef, cuisine: Cuisines }),
+    combineReducers({
+      dish: Dish,
+      chef: Chef,
+      cuisine: Cuisines
+    }),
     composeEnhancers(applyMiddleware(thunk, logger))
   );
   return store;
