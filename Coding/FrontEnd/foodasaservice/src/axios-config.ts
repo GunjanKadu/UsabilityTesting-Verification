@@ -1,4 +1,8 @@
 const cors = 'cors-anywhere.herokuapp.com';
-const baseURL = 'https://' + cors + '/foodnextdoor1.herokuapp.com/api';
+export const baseURL = 'https://' + cors + '/foodnextdoor1.herokuapp.com/api';
 
-export default baseURL;
+export const loginURL =
+  'https://' + cors + '/foodnextdoor1.herokuapp.com/account/login/';
+
+export const registerURL =
+  'https://' + cors + '/foodnextdoor1.herokuapp.com/account/register/';

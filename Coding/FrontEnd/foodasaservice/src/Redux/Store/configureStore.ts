@@ -5,6 +5,8 @@ import logger from 'redux-logger';
 import { Dish } from 'Redux/Reducers/dishes';
 import { Chef } from 'Redux/Reducers/chef';
 import { Cuisines } from 'Redux/Reducers/cuisines';
+import { Account } from 'Redux/Reducers/account';
+
 const composeEnhancers =
   ((window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose) &&
     (window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']({
@@ -18,7 +20,8 @@ export const ConfigureStore = () => {
     combineReducers({
       dish: Dish,
       chef: Chef,
-      cuisine: Cuisines
+      cuisine: Cuisines,
+      account: Account
     }),
     composeEnhancers(applyMiddleware(thunk, logger))
   );
