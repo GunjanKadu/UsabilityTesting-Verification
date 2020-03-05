@@ -17,12 +17,12 @@ const Home = () => {
         </div>
         <img className='HomeDish' src={HomePageImage} alt='Home Dish' />
       </div>
-      <div className='cooks'>
+      {/* <div className='cooks'>
         <TrendingCooks />
       </div>
       <div className='dishes'>
         <TrendingDishes />
-      </div>
+      </div> */}
     </div>
   );
 };

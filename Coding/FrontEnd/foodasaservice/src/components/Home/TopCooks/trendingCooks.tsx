@@ -31,7 +31,7 @@ const TrendingCooks = props => {
             <img
               className='image'
               width='30%'
-              src='https://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2017/07/main/bean-veg-chili-ck.jpg?itok=Wuhrkr2_'
+              src={item.img}
               alt='Card image cap'
             />
             <CardBody className='text'>
