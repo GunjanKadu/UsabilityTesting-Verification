@@ -9,7 +9,7 @@ import {
   NavLink,
   NavbarText
 } from 'reactstrap';
-
+import Login from 'components/Navbar/Login/login';
 import navIcon from 'assests/images/navIcon.png';
 
 const NavbarComponent = () => {
@@ -38,15 +38,7 @@ const NavbarComponent = () => {
               <NavLink>Dish</NavLink>
             </NavItem>
           </Nav>
-
-          <NavbarText>
-            <button
-              className='btn btn-success'
-              style={{ fontFamily: 'monospace' }}
-            >
-              Login
-            </button>
-          </NavbarText>
+          <Login buttonLabel='Login' title='Login' />
         </Collapse>
       </Navbar>
     </div>
