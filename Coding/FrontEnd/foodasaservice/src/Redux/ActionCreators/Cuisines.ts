@@ -1,6 +1,6 @@
 import * as ActionTypes from 'Redux/Actions/actions';
 import axios, { AxiosResponse } from 'axios';
-import baseURL from 'axios-config';
+import { baseURL } from 'axios-config';
 
 export const fetchCuisines = () => dispatch => {
   dispatch(cuisinesLoading(true));
