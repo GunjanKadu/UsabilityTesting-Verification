@@ -2,11 +2,12 @@ import * as ActionTypes from 'Redux/Actions/actions';
 import axios, { AxiosResponse } from 'axios';
 import { loginURL } from 'axios-config';
 
+const headers = {
+  'Content-Type': 'application/json;charset=UTF-8',
+  'Access-Control-Allow-Origin': '*'
+};
 export const postLoginData = (email, password) => dispatch => {
-  const headers = {
-    'Content-Type': 'application/json;charset=UTF-8',
-    'Access-Control-Allow-Origin': '*'
-  };
+  dispatch(accountLoading(true));
   return axios
     .post(
       loginURL,
@@ -26,10 +27,10 @@ export const postLoginData = (email, password) => dispatch => {
       }
     )
     .then(response => {
-      console.log(response.data.token);
       sessionStorage.setItem('userData', response.data.token);
       dispatch(addLoginData(response.data));
       dispatch(addValidation(true));
+      dispatch(accountLoading(false));
     })
     .catch(error => {
       dispatch(addingLoginDataFailed(error.message));
@@ -60,4 +61,9 @@ export const removeValidation = () => ({
 export const addingLoginDataFailed = errorMessage => ({
   type: ActionTypes.POST_LOGIN_RESPONSE_FAILED,
   payload: errorMessage
+});
+
+export const accountLoading = response => ({
+  type: ActionTypes.ACCOUNT_LOADING,
+  payload: response
 });
