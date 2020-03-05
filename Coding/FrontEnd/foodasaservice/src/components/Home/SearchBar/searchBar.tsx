@@ -10,6 +10,12 @@ const SearchBar = () => {
             <legend>Discover the Amazing Dishes</legend>
           </fieldset>
           <div className='input-field first-wrap'>
+            <img
+              className='dish'
+              style={{ height: '40px', width: '40px' }}
+              src='https://image.flaticon.com/icons/png/512/33/33059.png'
+              alt=''
+            />
             <input
               id='search'
               type='text'

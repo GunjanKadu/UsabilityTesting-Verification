@@ -82,9 +82,13 @@ const Login = props => {
       <Button color='danger' onClick={toggle}>
         {loader}
       </Button>
-      <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle} style={{ textAlign: 'center' }}>
-          {title}
+      <Modal
+        style={{ position: 'relative', top: '17%', left: '-2%' }}
+        isOpen={modal}
+        toggle={toggle}
+      >
+        <ModalHeader toggle={toggle}>
+          <span style={{ position: 'relative', left: '320%' }}>{title}</span>
         </ModalHeader>
         <ModalBody>
           <Form onSubmit={handleLoginSubmit}>
@@ -116,12 +120,12 @@ const Login = props => {
                 />
               </Col>
             </FormGroup>
-            <br />
             <Button
-              color='success'
+              disabled={loginEmail && loginPassword ? false : true}
+              color='danger'
               onClick={toggle}
               type='submit'
-              style={{ position: 'relative', left: '40%', top: '1vh ' }}
+              style={{ position: 'relative', left: '40%' }}
             >
               Login
             </Button>
@@ -139,11 +143,14 @@ const Login = props => {
 
       {/* SignUp Modal */}
       <Modal
+        style={{ position: 'relative', top: '10%', left: '-2%' }}
         isOpen={nestedModal}
         toggle={toggleNested}
         onClosed={closeAll ? toggle : undefined}
       >
-        <ModalHeader>Sign Up</ModalHeader>
+        <ModalHeader>
+          <span style={{ position: 'relative', left: '225%' }}>Sign Up</span>
+        </ModalHeader>
         <ModalBody>
           {' '}
           <Form onSubmit={handleSignInSubmit}>
@@ -206,8 +213,20 @@ const Login = props => {
               </Col>
             </FormGroup>
             <ModalFooter>
-              <Button color='primary' onClick={toggleNested} type='submit'>
-                SignUpI{' '}
+              <Button
+                disabled={
+                  signUpFullName &&
+                  signupEmail &&
+                  signupPassword &&
+                  signupConfirmPassword
+                    ? false
+                    : true
+                }
+                color='danger'
+                onClick={toggleNested}
+                type='submit'
+              >
+                SignUp{' '}
               </Button>{' '}
               <Button color='secondary' onClick={toggleAll}>
                 Cancel{' '}

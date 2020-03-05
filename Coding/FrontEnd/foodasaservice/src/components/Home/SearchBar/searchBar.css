@@ -1,3 +1,7 @@
+.btn-search {
+  margin-left: 3em;
+  margin-top: 10px;
+}
 .s01 {
   display: -ms-flexbox;
   display: flex;
@@ -9,15 +13,38 @@
   background-size: cover;
   background-position: center center;
   padding: 15px;
+  position: relative;
+  left: 15%;
 }
-
+.first-wrap {
+  height: 42px;
+  position: absolute;
+  top: 68%;
+  left: 17%;
+  width: 19em;
+  border-radius: 2%;
+}
+.dish {
+  left: 142%;
+  top: 25%;
+  position: absolute;
+  z-index: 1;
+}
+#search {
+  border-radius: 9px;
+}
+.third-wrap {
+  position: absolute;
+  top: 78%;
+  left: 20%;
+}
 .s01 form legend {
   font-size: 72px;
   line-height: 1;
   color: #fff;
   margin-bottom: 60px;
   position: relative;
-  top: 46px;
+  top: 1px;
 }
 
 .s01 form .inner-form {
@@ -93,23 +120,21 @@
 }
 
 .s01 form .inner-form .input-field.third-wrap .btn-search {
-  height: 152%;
+  position: relative;
   width: 100%;
-  background: green;
+  background: #dc3545;
   white-space: nowrap;
-  border-radius: 0.5px;
   font-size: 20px;
   color: #fff;
   transition: all 0.2s ease-out, color 0.2s ease-out;
   border: 0;
   cursor: pointer;
+  border-radius: 12px;
+  height: 42px;
 }
-.btn-search {
-  margin-left: 3em;
-  margin-top: 10px;
-}
+
 .s01 form .inner-form .input-field.third-wrap .btn-search:hover {
-  background: #0c912d;
+  background: #b12432;
 }
 
 @media screen and (max-width: 992px) {
