@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import {
   Collapse,
   Navbar,
@@ -7,16 +8,36 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText
+  Button
 } from 'reactstrap';
 import Login from 'components/Navbar/Login/login';
 import navIcon from 'assests/images/navIcon.png';
+import { addValidation, logOut } from 'Redux/ActionCreators/Login';
 
-const NavbarComponent = () => {
+const NavbarComponent = props => {
+  //Validated
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('userData')) {
+      props.addValidation(true);
+    }
+  }, [props.account.LoginDetails.token, props.account.isValidated]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('userData')) {
+      props.addValidation(true);
+    } else {
+      props.addValidation(false);
+    }
+  }, []);
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const handleLogout = () => {
+    props.logOut();
+  };
+  const validated = props.account.isValidated;
   return (
     <div>
       <Navbar color='light' light expand='md'>
@@ -38,11 +59,31 @@ const NavbarComponent = () => {
               <NavLink>Dish</NavLink>
             </NavItem>
           </Nav>
-          <Login buttonLabel='Login' title='Login' />
+          {validated ? (
+            <Button className='danger' onClick={handleLogout}>
+              Logout
+            </Button>
+          ) : (
+            <Login buttonLabel='Login' title='Login' />
+          )}
         </Collapse>
       </Navbar>
     </div>
   );
 };
-
-export default NavbarComponent;
+const mapDispatchToProps = dispatch => {
+  return {
+    addValidation: value => {
+      dispatch(addValidation(value));
+    },
+    logOut: () => {
+      dispatch(logOut());
+    }
+  };
+};
+const mapStateToProps = state => {
+  return {
+    account: state.account
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarComponent);

@@ -38,14 +38,6 @@ const Login = props => {
 
   const toggle = () => setModal(!modal);
 
-  useEffect(() => {
-    if (props.account.LoginDetails.token) {
-      console.log('Validated');
-    } else {
-      console.log('Not Validated');
-    }
-  }, [props.account.LoginDetails]);
-
   const toggleNested = () => {
     setNestedModal(!nestedModal);
     setCloseAll(false);
