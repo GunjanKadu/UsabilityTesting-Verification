@@ -35,12 +35,17 @@ export const postLoginData = (email, password) => dispatch => {
     .catch(error => {
       dispatch(addingLoginDataFailed(error.message));
       dispatch(addValidation(false));
+      dispatch(accountLoading(false));
     });
 };
 
 export const logOut = () => dispatch => {
-  sessionStorage.removeItem('userData');
-  dispatch(removeValidation());
+  dispatch(accountLoading(true));
+  setTimeout(() => {
+    sessionStorage.removeItem('userData');
+    dispatch(removeValidation());
+    dispatch(accountLoading(false));
+  }, 1500);
 };
 
 export const addLoginData = response => ({
