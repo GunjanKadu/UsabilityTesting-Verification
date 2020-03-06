@@ -61,6 +61,7 @@ const Login = props => {
   const handleLoginSubmit = event => {
     event.preventDefault();
     props.postLoginData(loginEmail, loginPassword);
+    setModal(false);
   };
 
   //Loading Effect

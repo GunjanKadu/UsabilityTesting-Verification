@@ -8,7 +8,8 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button
+  Button,
+  Spinner
 } from 'reactstrap';
 import Login from 'components/Navbar/Login/login';
 import navIcon from 'assests/images/navIcon.png';
@@ -38,6 +39,19 @@ const NavbarComponent = props => {
     props.logOut();
   };
   const validated = props.account.isValidated;
+
+  //Loading Effect
+  const isAccountLoading = props.account.Loading;
+  let loader;
+  if (isAccountLoading) {
+    loader = (
+      <div>
+        <Spinner size='sm' color='light' />
+      </div>
+    );
+  } else {
+    loader = <span>Logout</span>;
+  }
   return (
     <div>
       <Navbar color='light' light expand='md'>
@@ -61,7 +75,7 @@ const NavbarComponent = props => {
           </Nav>
           {validated ? (
             <Button className='danger' onClick={handleLogout}>
-              Logout
+              {loader}
             </Button>
           ) : (
             <Login buttonLabel='Login' title='Login' />
