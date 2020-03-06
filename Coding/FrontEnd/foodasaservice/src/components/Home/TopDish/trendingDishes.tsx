@@ -63,7 +63,7 @@ const TrendingDishes = props => {
               height: '130px'
             }}
           >
-            <img
+            {/* <img
               style={{
                 position: 'absolute',
                 left: '0px',
@@ -72,7 +72,7 @@ const TrendingDishes = props => {
                 height: '100%'
               }}
               src={item.img}
-            ></img>
+            ></img> */}
             <div
               style={{
                 width: '70%',

@@ -1,59 +1,77 @@
 import React from 'react';
+import { Row, Col, Card, Button, CardTitle, CardText } from 'reactstrap';
+
 import './working.css';
 const Working = () => {
   return (
-    <div className='background'>
-      <div className='container'>
-        <div className='panel pricing-table'>
-          <div className='pricing-plan'>
-            <img
-              src='https://s22.postimg.cc/8mv5gn7w1/paper-plane.png'
-              alt=''
-              className='pricing-img'
-            />
-            ><h2 className='pricing-header'>Personal</h2>
-            <ul className='pricing-features'>
-              <li className='pricing-features-item'>Working</li>
-              <li className='pricing-features-item'>Working</li>
-            </ul>
-            <a href='#/' className='pricing-button is-featured'>
-              Sign up
-            </a>
-          </div>
-
-          <div className='pricing-plan'>
-            <img
-              src='https://s28.postimg.cc/ju5bnc3x9/plane.png'
-              alt=''
-              className='pricing-img'
-            />
-            <h2 className='pricing-header'>Small team</h2>
-            <ul className='pricing-features'>
-              <li className='pricing-features-item'>Working</li>
-              <li className='pricing-features-item'>Working</li>
-            </ul>
-            <a href='#/' className='pricing-button is-featured'>
-              Order
-            </a>
-          </div>
-
-          <div className='pricing-plan'>
-            <img
-              src='https://s21.postimg.cc/tpm0cge4n/space-ship.png'
-              alt=''
-              className='pricing-img'
-            />
-            <h2 className='pricing-header'>Enterprise</h2>
-            <ul className='pricing-features'>
-              <li className='pricing-features-item'>Working</li>
-              <li className='pricing-features-item'>Working</li>
-            </ul>
-            <a href='#/' className='pricing-button is-featured'>
-              Eat
-            </a>
-          </div>
-        </div>
-      </div>
+    <div style={{ marginTop: '5em' }}>
+      <h3 style={{ margin: '15px' }}>foodnextdoor.de </h3>
+      <h1 style={{ color: '#b12432', marginBottom: '125px' }}>Your Choice. </h1>
+      <Row>
+        <Col sm={3}>
+          <div className='circle'></div>
+          <Card
+            style={{
+              height: '40vh',
+              margin: '20px',
+              position: 'relative',
+              left: '65%'
+            }}
+            body
+            color='light'
+          >
+            <div className='classSpacing'>
+              <CardTitle className='Header'>Search</CardTitle>
+              <CardText>
+                With supporting text below as a natural lead-in to additional
+                content.
+              </CardText>
+            </div>
+          </Card>
+        </Col>
+        <Col sm={3}>
+          <div className='circle'></div>
+          <Card
+            style={{
+              height: '40vh',
+              margin: '20px',
+              position: 'relative',
+              left: '65%'
+            }}
+            body
+            color='light'
+          >
+            <div className='classSpacing'>
+              <CardTitle className='Header'>Order</CardTitle>
+              <CardText>
+                With supporting text below as a natural lead-in to additional
+                content.
+              </CardText>
+            </div>
+          </Card>
+        </Col>
+        <Col sm={3}>
+          <div className='circle'></div>
+          <Card
+            style={{
+              height: '40vh',
+              margin: '20px',
+              position: 'relative',
+              left: '65%'
+            }}
+            body
+            color='light'
+          >
+            <div className='classSpacing'>
+              <CardTitle className='Header'> Eat</CardTitle>
+              <CardText>
+                With supporting text below as a natural lead-in to additional
+                content.
+              </CardText>
+            </div>
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 };
