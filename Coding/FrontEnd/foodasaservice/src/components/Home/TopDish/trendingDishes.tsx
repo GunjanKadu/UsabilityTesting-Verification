@@ -6,13 +6,14 @@ import {
   CardTitle,
   CardSubtitle,
   Spinner,
-  Badge
+  Badge,
+  CardImg
 } from 'reactstrap';
 import { fetchTopDishes } from 'Redux/ActionCreators/Dishes';
 import { fetchCuisines } from 'Redux/ActionCreators/Cuisines';
 import { connect } from 'react-redux';
 import './trendingDishes.css';
-
+import like from 'assests/images/like.png';
 const TrendingDishes = props => {
   //On Mounting Fetch States
   useEffect(() => {
@@ -53,31 +54,55 @@ const TrendingDishes = props => {
 
       return (
         <div key={item.id}>
-          <Card className='card'>
-            <CardBody>
-              <CardTitle className='dishCardTitle'>{item.dish_name} </CardTitle>
-              <Badge color='danger' style={{ color: 'white' }}>
-                {item.likes} Fingers Licked
-              </Badge>
-
-              <CardSubtitle>
-                <CuisinesNames />
-              </CardSubtitle>
-              <hr />
-            </CardBody>
+          <Card
+            body
+            style={{
+              backgroundColor: 'white',
+              marginBottom: '30px',
+              borderRadius: '30px',
+              height: '130px'
+            }}
+          >
             <img
-              className='image'
-              width='30%'
+              style={{
+                position: 'absolute',
+                left: '0px',
+                top: '0px',
+                width: '25%',
+                height: '100%'
+              }}
               src={item.img}
-              alt='Card image cap'
-            />
-            <CardBody className='text'>
+            ></img>
+            <div
+              style={{
+                width: '70%',
+                height: '90%',
+                position: 'relative',
+                left: '30%'
+              }}
+            >
+              {' '}
+              <CardTitle style={{ fontWeight: 'bold' }}>
+                <h6 style={{ color: '#dc3545' }}> {item.dish_name}</h6>
+                <CuisinesNames />
+                <img
+                  src={like}
+                  style={{ height: '15px', width: '15px' }}
+                  alt=''
+                />
+
+                <Badge
+                  href='#'
+                  style={{ backgroundColor: '#e5e5e5', color: 'black' }}
+                >
+                  {item.likes}
+                </Badge>
+              </CardTitle>
               <CardText>
-                {' '}
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                With supporting text below as a natural lead-in to additional
+                content.
               </CardText>
-            </CardBody>
+            </div>
           </Card>
         </div>
       );
@@ -90,11 +115,14 @@ const TrendingDishes = props => {
         <Spinner
           style={{ width: '5rem', height: '5rem' }}
           type='grow'
-          color='info'
+          color='danger'
         />
       ) : (
         <div>
-          <h3>Featured Dishes</h3>
+          <h3 style={{ position: 'relative', left: '8%', top: '-5%' }}>
+            <Badge color='danger'>Featured Dishes</Badge>
+          </h3>
+
           <RenderDishes />
         </div>
       )}

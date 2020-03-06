@@ -5,10 +5,13 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  Spinner
+  Spinner,
+  Badge
 } from 'reactstrap';
 import { fetchTopCooks } from 'Redux/ActionCreators/Chefs';
 import { connect } from 'react-redux';
+import like from 'assests/images/like.png';
+
 import './trendingCooks.css';
 
 const TrendingCooks = props => {
@@ -22,25 +25,54 @@ const TrendingCooks = props => {
     const renderCookArray = chefs.map(item => {
       return (
         <div key={item.id}>
-          <Card className='card'>
-            <CardBody>
-              <CardTitle>{item.chef_name}</CardTitle>
-              <CardSubtitle>Indian</CardSubtitle>
-              <hr />
-            </CardBody>
+          <Card
+            body
+            style={{
+              backgroundColor: 'white',
+              marginBottom: '30px',
+              borderRadius: '30px',
+              height: '130px'
+            }}
+          >
             <img
-              className='image'
-              width='30%'
+              style={{
+                position: 'absolute',
+                left: '0px',
+                top: '0px',
+                width: '25%',
+                height: '100%'
+              }}
               src={item.img}
-              alt='Card image cap'
-            />
-            <CardBody className='text'>
+            ></img>
+            <div
+              style={{
+                width: '70%',
+                height: '90%',
+                position: 'relative',
+                left: '30%'
+              }}
+            >
+              {' '}
+              <CardTitle style={{ fontWeight: 'bold' }}>
+                <h6 style={{ color: '#dc3545' }}> {item.name}</h6>
+                <img
+                  src={like}
+                  style={{ height: '15px', width: '15px' }}
+                  alt=''
+                />
+
+                <Badge
+                  href='#'
+                  style={{ backgroundColor: '#e5e5e5', color: 'black' }}
+                >
+                  {item.likes}
+                </Badge>
+              </CardTitle>
               <CardText>
-                {' '}
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                With supporting text below as a natural lead-in to additional
+                content.
               </CardText>
-            </CardBody>
+            </div>
           </Card>
         </div>
       );
@@ -53,11 +85,13 @@ const TrendingCooks = props => {
         <Spinner
           style={{ width: '5rem', height: '5rem' }}
           type='grow'
-          color='info'
+          color='danger'
         />
       ) : (
         <div>
-          <h3>Featured Chefs</h3>
+          <h3 style={{ position: 'relative', left: '8%', top: '-5%' }}>
+            <Badge color='danger'>Featured Cooks</Badge>
+          </h3>
           <RenderCooks />
         </div>
       )}
