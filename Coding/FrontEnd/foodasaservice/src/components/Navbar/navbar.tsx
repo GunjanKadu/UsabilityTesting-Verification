@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -7,7 +8,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Button,
   Spinner
 } from 'reactstrap';
@@ -15,6 +15,7 @@ import Login from 'components/Navbar/Login/login';
 import navIcon from 'assests/images/navIcon.png';
 import { addValidation, logOut } from 'Redux/ActionCreators/Login';
 
+import './navbar.css';
 const NavbarComponent = props => {
   //Validated
   const [isOpen, setIsOpen] = useState(false);
@@ -56,8 +57,10 @@ const NavbarComponent = props => {
     <div>
       <Navbar color='light' light expand='md'>
         <img src={navIcon} alt='NavIcon' style={{ height: '50px' }} />
-        <NavbarBrand className='brand' href='/'>
-          Food Next Door
+        <NavbarBrand className='brand'>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to='/'>
+            Food Next Door
+          </Link>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -67,10 +70,22 @@ const NavbarComponent = props => {
             navbar
           >
             <NavItem>
-              <NavLink>Chef</NavLink>
+              <NavLink
+                activeClassName='navbar__link--active'
+                className='navbar__link'
+                to='/chefs'
+              >
+                Chef
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>Dish</NavLink>
+              <NavLink
+                to='/dishes'
+                activeClassName='navbar__link--active'
+                className='navbar__link'
+              >
+                Dishes
+              </NavLink>
             </NavItem>
           </Nav>
           {validated ? (

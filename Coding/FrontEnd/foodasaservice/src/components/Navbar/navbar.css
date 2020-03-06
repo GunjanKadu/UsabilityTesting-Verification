@@ -1,0 +1,16 @@
+.navbar__link {
+  margin: 1em;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-decoration: none;
+  color: #181818;
+}
+
+.navbar__link:hover {
+  transform: translateY(-2px);
+}
+
+.navbar__link--active {
+  color: #f6297f;
+  transition: border-bottom 0.5s ease-in-out;
+}

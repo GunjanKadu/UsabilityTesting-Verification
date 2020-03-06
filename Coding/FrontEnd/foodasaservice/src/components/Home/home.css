@@ -37,6 +37,6 @@
 .working {
   width: 100vw;
   position: absolute;
-  top: 200vh;
+  top: 200%;
   height: 100vh;
 }

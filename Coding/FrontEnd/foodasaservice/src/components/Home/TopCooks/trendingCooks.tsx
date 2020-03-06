@@ -30,11 +30,11 @@ const TrendingCooks = props => {
             style={{
               backgroundColor: 'white',
               marginBottom: '30px',
-              borderRadius: '30px',
+              borderRadius: '4px',
               height: '130px'
             }}
           >
-            {/* <img
+            <img
               style={{
                 position: 'absolute',
                 left: '0px',
@@ -43,7 +43,7 @@ const TrendingCooks = props => {
                 height: '100%'
               }}
               src={item.img}
-            ></img> */}
+            ></img>
             <div
               style={{
                 width: '70%',
