@@ -34,3 +34,8 @@
   left: 50vw;
   width: 35vw;
 }
+.working {
+  width: 100vw;
+  position: absolute;
+  top: 200vh;
+}
