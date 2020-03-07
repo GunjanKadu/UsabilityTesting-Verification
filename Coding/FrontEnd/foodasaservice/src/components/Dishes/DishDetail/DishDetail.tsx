@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Card, CardText, CardTitle, Badge } from 'reactstrap';
 import { connect } from 'react-redux';
+
 import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
+import like from 'assests/images/like.png';
 
 const DishDetail = props => {
   const { match, location, history, allDishes, fetchAllDishes } = props;
@@ -46,28 +48,38 @@ const DishDetail = props => {
             position: 'absolute',
             left: '0px',
             top: '0px',
-            width: '25%',
-            height: '100%'
+            width: '100%',
+            height: '30%',
+            objectFit: 'cover'
           }}
-          src={dishDetail.img}
+          src='https://media.istockphoto.com/photos/tasty-pepperoni-pizza-and-cooking-ingredients-tomatoes-basil-on-black-picture-id1083487948?k=6&m=1083487948&s=612x612&w=0&h=lK-mtDHXA4aQecZlU-KJuAlN9Yjgn3vmV2zz5MMN7e4='
         ></img>
-        <div
-          style={{
-            width: '70%',
-            height: '90%',
-            float: 'left'
-          }}
-        >
+        <div>
           {' '}
           <CardTitle style={{ fontWeight: 'bold' }}>
-            <h6 style={{ color: '#dc3545' }}> {dishDetail.dish_name}</h6>
-
-            <Badge
-              href='#'
-              style={{ backgroundColor: '#e5e5e5', color: 'black' }}
+            <h6
+              style={{
+                color: '#dc3545',
+                position: 'absolute',
+                top: '33%'
+              }}
             >
-              {dishDetail.like}
-            </Badge>
+              {' '}
+              {dishDetail.dish_name}
+            </h6>
+            <div style={{ position: 'absolute', top: '36%', left: '1%' }}>
+              <img
+                src={like}
+                style={{ height: '50px', width: '50px' }}
+                alt=''
+              />
+              <Badge
+                href='#'
+                style={{ backgroundColor: '#e5e5e5', color: 'black' }}
+              >
+                {dishDetail.likes}
+              </Badge>
+            </div>
           </CardTitle>
           <CardText>
             With supporting text below as a natural lead-in to additional
