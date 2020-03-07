@@ -48,30 +48,32 @@ export const dishesLoading = value => ({
 //Fetch All Dishes
 export const fetchAllDishes = () => dispatch => {
   dispatch(allDishesLoading(true));
-  return axios
-    .get(baseURL + '/dishlisting')
-    .then(
-      (response: AxiosResponse) => {
-        console.log(response);
-        return response;
-      },
-      error => {
-        var errMess = new Error(error.message);
-        throw errMess;
-      }
-    )
-    .then(response => {
-      dispatch(
-        allDishesFetched(response.data),
-        dispatch(allDishesLoading(false))
-      );
-    })
-    .catch(error => {
-      dispatch(
-        fetchAllDishesFailed(error.message),
-        dispatch(allDishesLoading(false))
-      );
-    });
+  return setTimeout(() => {
+    axios
+      .get(baseURL + '/dishlisting')
+      .then(
+        (response: AxiosResponse) => {
+          console.log(response);
+          return response;
+        },
+        error => {
+          var errMess = new Error(error.message);
+          throw errMess;
+        }
+      )
+      .then(response => {
+        dispatch(
+          allDishesFetched(response.data),
+          dispatch(allDishesLoading(false))
+        );
+      })
+      .catch(error => {
+        dispatch(
+          fetchAllDishesFailed(error.message),
+          dispatch(allDishesLoading(false))
+        );
+      });
+  }, 2000);
 };
 
 export const allDishesLoading = value => ({
