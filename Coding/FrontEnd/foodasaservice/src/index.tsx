@@ -27,27 +27,27 @@ const options = {
   transition: transitions.SCALE
 };
 
-axios.interceptors.request.use(
-  request => {
-    console.log(request);
-    return request;
-  },
-  error => {
-    console.log(error);
-    return Promise.reject(error);
-  }
-);
+// axios.interceptors.request.use(
+//   request => {
+//     console.log(request);
+//     return request;
+//   },
+//   error => {
+//     console.log(error);
+//     return Promise.reject(error);
+//   }
+// );
 
-axios.interceptors.response.use(
-  request => {
-    console.log(request);
-    return request;
-  },
-  error => {
-    console.log(error);
-    return Promise.reject(error);
-  }
-);
+// axios.interceptors.response.use(
+//   request => {
+//     console.log(request);
+//     return request;
+//   },
+//   error => {
+//     console.log(error);
+//     return Promise.reject(error);
+//   }
+// );
 
 const store = ConfigureStore();
 

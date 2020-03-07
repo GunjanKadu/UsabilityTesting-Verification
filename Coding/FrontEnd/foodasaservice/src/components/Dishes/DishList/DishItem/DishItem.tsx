@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react';
 import { Card, CardText, CardTitle, Badge, Spinner } from 'reactstrap';
-import like from 'assests/images/like.png';
-import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 import { connect } from 'react-redux';
 
+import { Link, withRouter } from 'react-router-dom';
+import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
+import like from 'assests/images/like.png';
+
 const DishItem = props => {
+  const { match, location, history } = props;
+
   useEffect(() => {
     props.fetchAllDishes();
   }, []);
+
   const listOfAllDishes = props.allDishes.DishList;
   //Global Cuisines Array
   const cuisines = props.cuisines.Cuisine;
@@ -39,56 +44,61 @@ const DishItem = props => {
 
       return (
         <div key={item.id} style={{ cursor: 'pointer' }}>
-          <Card
-            body
-            style={{
-              backgroundColor: 'white',
-              marginBottom: '10px',
-              borderRadius: '4px',
-              height: '130px'
-            }}
+          <Link
+            to={`${match.url}/${item.id}`}
+            style={{ textDecoration: 'none', color: 'black' }}
           >
-            <img
+            <Card
+              body
               style={{
-                position: 'absolute',
-                left: '0px',
-                top: '0px',
-                width: '25%',
-                height: '100%'
-              }}
-              src={item.img}
-            ></img>
-            <div
-              style={{
-                width: '70%',
-                height: '90%',
-                position: 'relative',
-                left: '30%'
+                backgroundColor: 'white',
+                marginBottom: '10px',
+                borderRadius: '4px',
+                height: '130px'
               }}
             >
-              {' '}
-              <CardTitle style={{ fontWeight: 'bold' }}>
-                <h6 style={{ color: '#dc3545' }}> {item.dish_name}</h6>
-                <CuisinesNames />
-                <img
-                  src={like}
-                  style={{ height: '15px', width: '15px' }}
-                  alt=''
-                />
+              <img
+                style={{
+                  position: 'absolute',
+                  left: '0px',
+                  top: '0px',
+                  width: '25%',
+                  height: '100%'
+                }}
+                src={item.img}
+              ></img>
+              <div
+                style={{
+                  width: '70%',
+                  height: '90%',
+                  position: 'relative',
+                  left: '30%'
+                }}
+              >
+                {' '}
+                <CardTitle style={{ fontWeight: 'bold' }}>
+                  <h6 style={{ color: '#dc3545' }}> {item.dish_name}</h6>
+                  <CuisinesNames />
+                  <img
+                    src={like}
+                    style={{ height: '15px', width: '15px' }}
+                    alt=''
+                  />
 
-                <Badge
-                  href='#'
-                  style={{ backgroundColor: '#e5e5e5', color: 'black' }}
-                >
-                  {item.likes}
-                </Badge>
-              </CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
-            </div>
-          </Card>
+                  <Badge
+                    href='#'
+                    style={{ backgroundColor: '#e5e5e5', color: 'black' }}
+                  >
+                    {item.likes}
+                  </Badge>
+                </CardTitle>
+                <CardText>
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </CardText>
+              </div>
+            </Card>
+          </Link>
         </div>
       );
     });
@@ -123,4 +133,6 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(DishItem);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(DishItem)
+);

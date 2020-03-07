@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
 import DishList from 'components/Dishes/DishList/DishList';
 import DishDetail from 'components/Dishes/DishDetail/DishDetail';
 import SearchBar from 'components/Dishes/SearchBar/SearchBar';
-
 import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 
 const Dish = props => {
   useEffect(() => {
     props.fetchAllDishes();
-  });
+  }, []);
   return (
     <div style={{ position: 'relative', top: '13%' }}>
       <div className='row'>
@@ -24,7 +24,7 @@ const Dish = props => {
             height: '80vh'
           }}
         >
-          <DishDetail />
+          <Route path='/dishes/:id' component={DishDetail} />
         </div>
       </div>
     </div>

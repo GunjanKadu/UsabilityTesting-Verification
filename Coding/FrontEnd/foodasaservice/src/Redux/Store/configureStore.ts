@@ -25,7 +25,8 @@ export const ConfigureStore = () => {
       account: Account,
       allDishes: AllDishes
     }),
-    composeEnhancers(applyMiddleware(thunk, logger))
+    // composeEnhancers(applyMiddleware(thunk, logger))
+    composeEnhancers(applyMiddleware(thunk))
   );
   return store;
 };

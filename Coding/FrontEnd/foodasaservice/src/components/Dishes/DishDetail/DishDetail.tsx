@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Card, CardText, CardTitle, Badge } from 'reactstrap';
+import { connect } from 'react-redux';
+import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 
-const DishDetail = () => {
+const DishDetail = props => {
+  const { match, location, history, allDishes, fetchAllDishes } = props;
+
+  let dishDetail;
+  console.log(allDishes.DishList);
+  if (allDishes.DishList.length > 0) {
+    if (match.params.id) {
+      dishDetail = allDishes.DishList.find(item => {
+        console.log(item.id);
+        return item.id == match.params.id;
+      });
+    } else {
+      dishDetail = allDishes.DishList.find(item => {
+        console.log(item.id);
+        return item.id == 8;
+      });
+    }
+  }
+
   return (
     <div
       style={{
@@ -20,16 +41,16 @@ const DishDetail = () => {
           height: '100%'
         }}
       >
-        {/* <img
-  style={{
-    position: 'absolute',
-    left: '0px',
-    top: '0px',
-    width: '25%',
-    height: '100%'
-  }}
-  src=''
-></img> */}
+        <img
+          style={{
+            position: 'absolute',
+            left: '0px',
+            top: '0px',
+            width: '25%',
+            height: '100%'
+          }}
+          src={dishDetail.img}
+        ></img>
         <div
           style={{
             width: '70%',
@@ -39,13 +60,13 @@ const DishDetail = () => {
         >
           {' '}
           <CardTitle style={{ fontWeight: 'bold' }}>
-            <h6 style={{ color: '#dc3545' }}> Name</h6>
+            <h6 style={{ color: '#dc3545' }}> {dishDetail.dish_name}</h6>
 
             <Badge
               href='#'
               style={{ backgroundColor: '#e5e5e5', color: 'black' }}
             >
-              Likes
+              {dishDetail.like}
             </Badge>
           </CardTitle>
           <CardText>
@@ -57,5 +78,20 @@ const DishDetail = () => {
     </div>
   );
 };
-
-export default DishDetail;
+const mapStateToProps = state => {
+  return {
+    allDishes: state.allDishes,
+    account: state.account,
+    cuisines: state.cuisine
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAllDishes: () => {
+      dispatch(fetchAllDishes());
+    }
+  };
+};
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(DishDetail)
+);
