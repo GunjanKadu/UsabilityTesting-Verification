@@ -122,14 +122,14 @@
 .s01 form .inner-form .input-field.third-wrap .btn-search {
   position: relative;
   width: 100%;
-  background: #dc3545;
+  background: #059205;
   white-space: nowrap;
   font-size: 20px;
   color: #fff;
   transition: all 0.2s ease-out, color 0.2s ease-out;
   border: 0;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 3px;
   height: 42px;
 }
 

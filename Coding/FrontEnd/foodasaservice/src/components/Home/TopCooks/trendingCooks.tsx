@@ -1,13 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  Card,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Spinner,
-  Badge
-} from 'reactstrap';
+import { Card, CardText, CardTitle, Spinner, Badge } from 'reactstrap';
 import { fetchTopCooks } from 'Redux/ActionCreators/Chefs';
 import { connect } from 'react-redux';
 import like from 'assests/images/like.png';

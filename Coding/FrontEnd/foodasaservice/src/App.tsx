@@ -15,7 +15,14 @@ export function App() {
       </div>
       <Switch>
         <Route path='/' exact component={Home} />
-        <div style={{ position: 'absolute', top: '10%' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: '1%',
+            width: '100vw',
+            height: '100vh'
+          }}
+        >
           <Route path='/dishes' component={Dishes} />
           <Route path='/chefs' component={Chefs} />
         </div>
