@@ -7,6 +7,7 @@ import { TopChef } from 'Redux/Reducers/topChefs';
 import { Cuisines } from 'Redux/Reducers/cuisines';
 import { Account } from 'Redux/Reducers/account';
 import { AllDishes } from 'Redux/Reducers/allDishes';
+
 const composeEnhancers =
   ((window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose) &&
     (window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']({
