@@ -5,6 +5,7 @@ export const Account = (
     Loading: false,
     LoginDetailsSuccess: [],
     LoginDetailsFailed: [],
+    UserDataJwt: [],
     isValidated: false,
     isSuccessfullyAdded: false,
     signUpError: ''
@@ -15,6 +16,9 @@ export const Account = (
     //LOGIN
     case ActionTypes.POST_LOGIN_RESPONSE:
       return { ...state, LoginDetailSuccess: action.payload };
+
+    case ActionTypes.USER_DATA_JWT:
+      return { ...state, UserDataJwt: action.payload };
 
     case ActionTypes.POST_LOGIN_RESPONSE_FAILED:
       return { ...state, LoginDetailsFailed: action.payload };

@@ -55,7 +55,7 @@ const NavbarComponent = props => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem('userData')) {
+    if (sessionStorage.getItem('userToken')) {
       props.addValidation(true);
       LoginSuccess();
       setTimeout(() => {

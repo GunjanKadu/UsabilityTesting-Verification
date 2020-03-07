@@ -2,6 +2,8 @@ import * as ActionTypes from 'Redux/Actions/actions';
 import axios, { AxiosResponse } from 'axios';
 import { loginURL } from 'axios-config';
 
+var jwtDecode = require('jwt-decode');
+
 const headers = {
   'Content-Type': 'application/json;charset=UTF-8',
   'Access-Control-Allow-Origin': '*'
@@ -29,7 +31,11 @@ export const postLoginData = (email, password) => dispatch => {
       }
     )
     .then(response => {
-      sessionStorage.setItem('userData', response.data.token);
+      var decoded = jwtDecode(response.data.token);
+
+      sessionStorage.setItem('userToken', response.data.token);
+      dispatch(userDataFromJwt(decoded));
+      sessionStorage.setItem('userData', JSON.stringify(decoded));
       dispatch(addLoginData(response.data));
       dispatch(addValidation(true));
       dispatch(accountLoading(false));
@@ -45,6 +51,7 @@ export const postLoginData = (email, password) => dispatch => {
 export const logOut = () => dispatch => {
   dispatch(accountLoading(true));
   setTimeout(() => {
+    sessionStorage.removeItem('userToken');
     sessionStorage.removeItem('userData');
     dispatch(removeValidation());
     dispatch(accountLoading(false));
@@ -56,6 +63,10 @@ export const addLoginData = response => ({
   payload: response
 });
 
+export const userDataFromJwt = response => ({
+  type: ActionTypes.USER_DATA_JWT,
+  payload: response
+});
 export const addValidation = response => ({
   type: ActionTypes.ADD_VALIDATION,
   payload: response
