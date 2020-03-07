@@ -93,8 +93,8 @@ const TrendingCooks = props => {
 
 const mapStateToProps = state => {
   return {
-    dishes: state.dish,
-    chefs: state.chef
+    dishes: state.topDish,
+    chefs: state.topChef
   };
 };
 const mapDispatchToProps = dispatch => {
