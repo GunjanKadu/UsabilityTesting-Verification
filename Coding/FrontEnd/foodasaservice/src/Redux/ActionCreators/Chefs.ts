@@ -24,7 +24,7 @@ export const fetchTopCooks = () => dispatch => {
       .catch(error => {
         dispatch(chefsFailed(error.message), dispatch(chefsLoading(false)));
       });
-  }, 500);
+  }, 2000);
 };
 
 export const addChefs = chef => ({

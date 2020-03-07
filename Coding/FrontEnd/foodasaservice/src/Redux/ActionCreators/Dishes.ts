@@ -27,7 +27,7 @@ export const fetchTopDishes = () => dispatch => {
       .catch(error => {
         dispatch(dishesFailed(error.message), dispatch(dishesLoading(false)));
       });
-  }, 500);
+  }, 2000);
 };
 
 export const addDishes = dishes => ({
@@ -46,7 +46,7 @@ export const dishesLoading = value => ({
 });
 
 //Fetch All Dishes
-export const FetchAllDishes = () => dispatch => {
+export const fetchAllDishes = () => dispatch => {
   dispatch(allDishesLoading(true));
   return axios
     .get(baseURL + '/dishlisting')
@@ -62,13 +62,13 @@ export const FetchAllDishes = () => dispatch => {
     )
     .then(response => {
       dispatch(
-        fetchAllDishes(response.data),
+        allDishesFetched(response.data),
         dispatch(allDishesLoading(false))
       );
     })
     .catch(error => {
       dispatch(
-        fetchAllFailed(error.message),
+        fetchAllDishesFailed(error.message),
         dispatch(allDishesLoading(false))
       );
     });
@@ -78,11 +78,11 @@ export const allDishesLoading = value => ({
   type: ActionTypes.FETCH_ALL_DISHES_LOADING,
   payload: value
 });
-export const fetchAllDishes = value => ({
+export const allDishesFetched = value => ({
   type: ActionTypes.FETCH_ALL_DISHES,
   payload: value
 });
-export const fetchAllFailed = value => ({
+export const fetchAllDishesFailed = value => ({
   type: ActionTypes.FETCH_ALL_DISHES_FAILED,
   payload: value
 });
