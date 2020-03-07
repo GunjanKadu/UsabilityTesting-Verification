@@ -3,7 +3,8 @@ import * as ActionTypes from 'Redux/Actions/actions';
 export const Account = (
   state = {
     Loading: false,
-    LoginDetails: {},
+    LoginDetailsSuccess: [],
+    LoginDetailsFailed: [],
     isValidated: false,
     isSuccessfullyAdded: false,
     signUpError: ''
@@ -13,7 +14,10 @@ export const Account = (
   switch (action.type) {
     //LOGIN
     case ActionTypes.POST_LOGIN_RESPONSE:
-      return { ...state, LoginDetails: action.payload };
+      return { ...state, LoginDetailSuccess: action.payload };
+
+    case ActionTypes.POST_LOGIN_RESPONSE_FAILED:
+      return { ...state, LoginDetailsFailed: action.payload };
 
     case ActionTypes.ADD_VALIDATION:
       return { ...state, isValidated: action.payload };

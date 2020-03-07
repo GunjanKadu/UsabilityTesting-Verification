@@ -5,6 +5,10 @@ import { App } from 'App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+//Alerting
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
+
 //Redux Store Provider
 import { Provider } from 'react-redux';
 
@@ -13,6 +17,15 @@ import { ConfigureStore } from 'Redux/Store/configureStore';
 
 //Axios Interceptors
 import axios from 'axios';
+
+//Alerting Setting
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.BOTTOM_LEFT,
+  timeout: 3000,
+  // you can also just use 'scale'
+  transition: transitions.SCALE
+};
 
 axios.interceptors.request.use(
   request => {
@@ -41,7 +54,9 @@ const store = ConfigureStore();
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <AlertProvider template={AlertTemplate} {...options}>
+        <App />
+      </AlertProvider>
     </Router>
   </Provider>,
   document.getElementById('root')

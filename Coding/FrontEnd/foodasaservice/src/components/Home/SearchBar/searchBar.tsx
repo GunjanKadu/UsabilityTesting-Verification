@@ -1,5 +1,6 @@
 import React from 'react';
 import './searchBar.css';
+import { useAlert } from 'react-alert';
 
 const SearchBar = () => {
   return (
