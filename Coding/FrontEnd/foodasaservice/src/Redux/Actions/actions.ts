@@ -27,3 +27,8 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
 //LOADING
 export const ACCOUNT_LOADING = 'ACCOUNT_LOADING';
+
+//*********************FETCH ALL DISHES****************************//
+export const FETCH_ALL_DISHES = 'FETCH_ALL_DISHES';
+export const FETCH_ALL_DISHES_FAILED = 'FETCH_ALL_DISHES_FAILED';
+export const FETCH_ALL_DISHES_LOADING = 'FETCH_ALL_DISHES_LOADING;';
