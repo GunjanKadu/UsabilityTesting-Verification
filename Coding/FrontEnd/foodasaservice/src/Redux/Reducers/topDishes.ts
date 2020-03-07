@@ -1,38 +1,41 @@
+// import { dishStateItems } from 'Types/Dishes';
 import * as ActionTypes from 'Redux/Actions/actions';
 
-export const Chef = (
+export const TopDish = (
   state = {
-    Chefs: [],
+    Dishes: [],
     ErrorMessage: null,
     IsLoading: true
   },
   action
 ) => {
   switch (action.type) {
-    case ActionTypes.FETCH_TOP_CHEFS:
+    //Top Dishes
+    case ActionTypes.FETCH_TOP_DISHES:
       return {
         ...state,
         ErrorMessage: null,
-        Chefs: action.payload,
+        Dishes: action.payload,
         IsLoading: false
       };
 
-    case ActionTypes.TOP_CHEFS_LOADING_FAILED:
+    case ActionTypes.TOP_DISHES_LOADING_FAILED:
       return {
         ...state,
         ErrorMessage: action.payload,
-        Chefs: [],
+        Dishes: [],
         IsLoading: action.payload
       };
 
-    case ActionTypes.CHEFS_LOADING:
+    case ActionTypes.DISHES_LOADING:
       return {
         ...state,
         ErrorMessage: null,
-        Chefs: [],
+        Dishes: [],
         IsLoading: action.payload
       };
 
+    //All Dishes
     default:
       return state;
   }
