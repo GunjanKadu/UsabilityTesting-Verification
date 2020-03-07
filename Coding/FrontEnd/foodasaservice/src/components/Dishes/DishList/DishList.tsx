@@ -1,10 +1,10 @@
 import React from 'react';
 import DishItem from 'components/Dishes/DishList/DishItem/DishItem';
 
-const DishList = () => {
+const DishList = ({ inputValue }) => {
   return (
     <div>
-      <DishItem />
+      <DishItem inputValue={inputValue} />
     </div>
   );
 };

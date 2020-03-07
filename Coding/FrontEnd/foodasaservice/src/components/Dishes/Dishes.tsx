@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
@@ -8,15 +8,22 @@ import SearchBar from 'components/Dishes/SearchBar/SearchBar';
 import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 
 const Dish = props => {
+  const [input, setInput] = useState();
   useEffect(() => {
     props.fetchAllDishes();
   }, []);
+
+  const handleChange = event => {
+    console.log(input);
+    setInput(event.target.value);
+  };
+
   return (
     <div style={{ position: 'relative', top: '13%' }}>
       <div className='row'>
         <div className='col-4' style={{ height: '80vh' }}>
-          <SearchBar />
-          <DishList />
+          <SearchBar onChangeValue={handleChange} value={input} />
+          <DishList inputValue={input} />
         </div>
         <div
           className='col-6'
