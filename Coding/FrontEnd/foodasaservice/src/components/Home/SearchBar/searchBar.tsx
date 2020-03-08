@@ -14,7 +14,9 @@ const SearchBar = () => {
       <form>
         <div className='inner-form'>
           <fieldset>
-            <legend>Discover the Amazing Dishes</legend>
+            <legend style={{ marginLeft: '18%' }}>
+              Discover the Amazing Dishes
+            </legend>
           </fieldset>
           <div className='input-field first-wrap'>
             <img
