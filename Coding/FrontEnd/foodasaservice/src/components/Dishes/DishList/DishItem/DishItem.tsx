@@ -47,7 +47,7 @@ const DishItem = props => {
         return (
           <div key={item.id} style={{ cursor: 'pointer' }}>
             <NavLink
-              activeStyle={{ color: 'red', position: 'absolute', left: '2%' }}
+              activeStyle={{ color: '#dc3545', fontWeight: 'bold' }}
               to={`${match.url}/${item.id}`}
               style={{ textDecoration: 'none', color: 'black' }}
             >
@@ -80,7 +80,7 @@ const DishItem = props => {
                 >
                   {' '}
                   <CardTitle style={{ fontWeight: 'bold' }}>
-                    <h6 style={{ color: '#dc3545' }}> {item.dish_name}</h6>
+                    <h6 style={{ color: 'black' }}> {item.dish_name}</h6>
                     <CuisinesNames />
                     <img
                       src={like}
