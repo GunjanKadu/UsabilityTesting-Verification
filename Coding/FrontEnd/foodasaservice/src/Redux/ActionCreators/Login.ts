@@ -21,11 +21,11 @@ export const postLoginData = (email, password) => dispatch => {
     )
     .then(
       (response: AxiosResponse) => {
-        console.log(response);
         return response;
       },
       error => {
-        console.log(error);
+        dispatch(addingLoginDataFailed(error.response.data));
+
         var errMess = new Error(error.message);
         throw errMess;
       }
@@ -42,8 +42,6 @@ export const postLoginData = (email, password) => dispatch => {
       dispatch(accountLoading(false));
     })
     .catch(error => {
-      console.log(error);
-      dispatch(addingLoginDataFailed(error.message));
       dispatch(addValidation(false));
       dispatch(accountLoading(false));
     });

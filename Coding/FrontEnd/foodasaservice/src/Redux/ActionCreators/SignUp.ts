@@ -21,9 +21,11 @@ export const postSignupData = (email, password, fullName) => dispatch => {
     )
     .then(
       (response: AxiosResponse) => {
+        console.log(response);
         return response;
       },
       error => {
+        dispatch(signUpError(error.response.data));
         var errMess = new Error(error.message);
         throw errMess;
       }
@@ -38,7 +40,7 @@ export const postSignupData = (email, password, fullName) => dispatch => {
       }
     })
     .catch(error => {
-      dispatch(signUpError(error.message));
+      console.log(error);
     });
 };
 

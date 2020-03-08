@@ -28,6 +28,15 @@ const NavbarComponent = props => {
 
   //Alerts
   const alert = useAlert();
+  const SignupSuccess = () =>
+    alert.show(
+      <div style={{ fontSize: '14px' }}>You Have Signed Up Successfully</div>,
+      {
+        timeout: 3000,
+        type: 'success',
+        transition: 'fade'
+      }
+    );
   const LoginSuccess = () =>
     alert.show(
       <div style={{ fontSize: '14px' }}>You Have Logged In Successfully</div>,
@@ -43,15 +52,14 @@ const NavbarComponent = props => {
       type: 'success',
       transition: 'fade'
     });
+
+  const loginErrorMessage = props.account.LoginDetailsFailed.non_field_errors;
   const LoginFailed = () =>
-    alert.show(
-      <div style={{ fontSize: '14px' }}>Wrong UserName or Password</div>,
-      {
-        timeout: 3000,
-        type: 'error',
-        transition: 'fade'
-      }
-    );
+    alert.show(<div style={{ fontSize: '14px' }}>{loginErrorMessage}</div>, {
+      timeout: 3000,
+      type: 'error',
+      transition: 'fade'
+    });
   const LogoutSuccess = () =>
     alert.show(<div style={{ fontSize: '14px' }}>See You Again</div>, {
       timeout: 3000,
@@ -68,6 +76,8 @@ const NavbarComponent = props => {
       props.addValidation(false);
     }
   }, [props.account.LoginDetailsSuccess.token, props.account.isValidated]);
+
+  //Login
   useEffect(() => {
     if (
       sessionStorage.getItem('userToken') &&
@@ -81,13 +91,19 @@ const NavbarComponent = props => {
       sessionStorage.removeItem('userPresent');
     }
   }, [props.account.LoginDetailsSuccess.token, props.account.isValidated]);
+  //Login Error
   useEffect(() => {
-    if (
-      props.account.LoginDetailsFailed == 'Request failed with status code 400'
-    ) {
+    if (loginErrorMessage) {
       LoginFailed();
     }
   }, [props.account.LoginDetailsFailed]);
+  //Signup
+  useEffect(() => {
+    if (props.account.isSuccessfullyAdded) {
+      SignupSuccess();
+    }
+  }, [props.account.isSuccessfullyAdded]);
+
   const toggle = () => setIsOpen(!isOpen);
 
   const handleLogout = () => {
@@ -110,6 +126,7 @@ const NavbarComponent = props => {
       <img src={UserIcon} alt='' style={{ height: '45px', width: '45px' }} />
     );
   }
+
   return (
     <div>
       <Navbar color='light' light expand='md'>
