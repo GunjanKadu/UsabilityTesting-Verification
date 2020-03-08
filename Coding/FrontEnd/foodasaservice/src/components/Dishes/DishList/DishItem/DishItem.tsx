@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Card, CardText, CardTitle, Badge, Spinner } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import { Link, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 import like from 'assests/images/like.png';
 
@@ -46,7 +46,8 @@ const DishItem = props => {
 
         return (
           <div key={item.id} style={{ cursor: 'pointer' }}>
-            <Link
+            <NavLink
+              activeStyle={{ color: 'red', position: 'absolute', left: '2%' }}
               to={`${match.url}/${item.id}`}
               style={{ textDecoration: 'none', color: 'black' }}
             >
@@ -54,9 +55,9 @@ const DishItem = props => {
                 body
                 style={{
                   backgroundColor: 'white',
-                  marginBottom: '10px',
+                  marginBottom: '4px',
                   borderRadius: '4px',
-                  height: '130px'
+                  height: '100px'
                 }}
               >
                 <img
@@ -100,7 +101,7 @@ const DishItem = props => {
                   </CardText>
                 </div>
               </Card>
-            </Link>
+            </NavLink>
           </div>
         );
       }
@@ -133,17 +134,18 @@ const DishItem = props => {
 
         return (
           <div key={item.id} style={{ cursor: 'pointer' }}>
-            <Link
+            <NavLink
               to={`${match.url}/${item.id}`}
+              activeStyle={{ color: 'red' }}
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <Card
                 body
                 style={{
                   backgroundColor: 'white',
-                  marginBottom: '10px',
                   borderRadius: '4px',
-                  height: '130px'
+                  height: '100px',
+                  marginBottom: '3px'
                 }}
               >
                 <img
@@ -187,7 +189,7 @@ const DishItem = props => {
                   </CardText>
                 </div>
               </Card>
-            </Link>
+            </NavLink>
           </div>
         );
       }

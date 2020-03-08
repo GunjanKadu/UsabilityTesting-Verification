@@ -10,7 +10,6 @@ const DishDetail = props => {
   const { match, location, history, allDishes, fetchAllDishes } = props;
 
   let dishDetail;
-  console.log(allDishes.DishList);
   if (allDishes.DishList.length > 0) {
     if (match.params.id) {
       dishDetail = allDishes.DishList.find(item => {
@@ -52,7 +51,7 @@ const DishDetail = props => {
             height: '30%',
             objectFit: 'cover'
           }}
-          src='https://media.istockphoto.com/photos/tasty-pepperoni-pizza-and-cooking-ingredients-tomatoes-basil-on-black-picture-id1083487948?k=6&m=1083487948&s=612x612&w=0&h=lK-mtDHXA4aQecZlU-KJuAlN9Yjgn3vmV2zz5MMN7e4='
+          src={dishDetail.img}
         ></img>
         <div>
           {' '}
@@ -61,13 +60,14 @@ const DishDetail = props => {
               style={{
                 color: '#dc3545',
                 position: 'absolute',
-                top: '33%'
+                top: '33%',
+                left: '45%'
               }}
             >
               {' '}
               {dishDetail.dish_name}
             </h6>
-            <div style={{ position: 'absolute', top: '36%', left: '1%' }}>
+            <div style={{ position: 'absolute', top: '36%', left: '45%' }}>
               <img
                 src={like}
                 style={{ height: '50px', width: '50px' }}
@@ -81,9 +81,20 @@ const DishDetail = props => {
               </Badge>
             </div>
           </CardTitle>
-          <CardText>
-            With supporting text below as a natural lead-in to additional
-            content.
+          <CardText
+            style={{ position: 'absolute', top: '46%', paddingRight: '10px' }}
+          >
+            <Card>
+              <CardText
+                body
+                style={{
+                  backgroundColor: 'white',
+                  padding: '5px'
+                }}
+              >
+                {dishDetail.description}
+              </CardText>
+            </Card>
           </CardText>
         </div>
       </Card>
