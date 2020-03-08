@@ -1,7 +1,6 @@
 import React from 'react';
 
 import SearchBar from 'components/Home/SearchBar/searchBar';
-import TrendingCooks from 'components/Home/TopCooks/trendingCooks';
 import TrendingDishes from 'components/Home/TopDish/trendingDishes';
 import Working from 'components/Home/Working/working';
 import HomePageImage from 'assests/images/HomePage1.png';
@@ -9,25 +8,31 @@ import HomePageImage from 'assests/images/HomePage1.png';
 import './home.css';
 
 const Home = () => {
-  return (
-    <div>
-      <div className='wrapper'>
-        <div className='searchBar'>
-          <SearchBar />
+    return (
+        <div>
+            <div className='wrapper'>
+                <div className='searchBar'>
+                    <SearchBar/>
+                </div>
+                <img className='HomeDish' src={HomePageImage} alt='Home Dish'/>
+            </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6">
+                        <TrendingDishes/>
+                    </div>
+                    <div className="col-md-6">
+                        <TrendingDishes/>
+                    </div>
+
+                </div>
+            </div>
+
+            <div className='working'>
+                <Working/>
+            </div>
         </div>
-        <img className='HomeDish' src={HomePageImage} alt='Home Dish' />
-      </div>
-      <div className='cooks'>
-        <TrendingCooks />
-      </div>
-      <div className='dishes'>
-        <TrendingDishes />
-      </div>
-      <div className='working'>
-        <Working />
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Home;
