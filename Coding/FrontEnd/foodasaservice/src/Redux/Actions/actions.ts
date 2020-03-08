@@ -33,3 +33,6 @@ export const ACCOUNT_LOADING = 'ACCOUNT_LOADING';
 export const FETCH_ALL_DISHES = 'FETCH_ALL_DISHES';
 export const FETCH_ALL_DISHES_FAILED = 'FETCH_ALL_DISHES_FAILED';
 export const FETCH_ALL_DISHES_LOADING = 'FETCH_ALL_DISHES_LOADING;';
+
+////*********************ADD TO CARTS****************************//
+export const ADD_DETAILS_TO_CART = 'ADD_DETAILS_TO_CART';

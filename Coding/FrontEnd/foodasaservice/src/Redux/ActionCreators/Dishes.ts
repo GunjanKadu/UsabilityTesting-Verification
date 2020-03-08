@@ -86,3 +86,14 @@ export const fetchAllDishesFailed = value => ({
   type: ActionTypes.FETCH_ALL_DISHES_FAILED,
   payload: value
 });
+
+export const DetailsToCart = value => dispatch => {
+  dispatch(AddDetailsToCart(value));
+};
+export const AddDetailsToCart = value => {
+  console.log(value, 'value');
+  return {
+    type: ActionTypes.ADD_DETAILS_TO_CART,
+    payload: value
+  };
+};
