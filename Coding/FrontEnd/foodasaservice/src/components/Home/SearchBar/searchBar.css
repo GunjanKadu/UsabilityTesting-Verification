@@ -1,6 +1,8 @@
 .btn-search {
   margin-left: 3em;
   margin-top: 10px;
+  position: relative;
+  left: 130%;
 }
 .s01 {
   display: -ms-flexbox;
@@ -12,16 +14,15 @@
   /* background: url('../images/Search_001.png'); */
   background-size: cover;
   background-position: center center;
-  padding: 15px;
   position: relative;
-  left: 15%;
+  right: 38.5%;
 }
 .first-wrap {
   height: 42px;
   position: absolute;
-  top: 68%;
-  left: 17%;
-  width: 19em;
+  top: 65%;
+  left: 64%;
+  width: 15em;
   border-radius: 2%;
 }
 .dish {
@@ -36,7 +37,7 @@
 .third-wrap {
   position: absolute;
   top: 78%;
-  left: 20%;
+  left: 26%;
 }
 .s01 form legend {
   font-size: 72px;
@@ -49,20 +50,13 @@
 
 .s01 form .inner-form {
   background: rgba(0, 0, 0, 0.5);
-  padding: 50px 47px;
-  display: -ms-flexbox;
   display: flex;
-  height: 500px;
-  width: 80em;
+  height: 50vh;
+  width: 180%;
   -ms-flex-pack: justify;
   justify-content: space-between;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.s01 form .inner-form .input-field {
-  margin-right: 30px;
-  height: 40px;
 }
 
 .s01 form .inner-form .input-field input {

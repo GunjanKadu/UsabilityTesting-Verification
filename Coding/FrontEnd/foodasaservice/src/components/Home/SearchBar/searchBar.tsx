@@ -13,8 +13,8 @@ const SearchBar = () => {
     <div className='s01'>
       <form>
         <div className='inner-form'>
-          <fieldset>
-            <legend style={{ marginLeft: '18%' }}>
+          <fieldset style={{ position: 'relative', top: '-10%' }}>
+            <legend style={{ marginLeft: '15%' }}>
               Discover the Amazing Dishes
             </legend>
           </fieldset>
