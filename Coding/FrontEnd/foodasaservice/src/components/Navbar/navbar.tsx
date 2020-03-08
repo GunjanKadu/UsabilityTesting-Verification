@@ -145,20 +145,20 @@ const NavbarComponent = props => {
           >
             <NavItem>
               <NavLink
-                activeClassName='navbar__link--active'
-                className='navbar__link'
-                to='/chefs'
-              >
-                Chef
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
                 to='/dishes'
                 activeClassName='navbar__link--active'
                 className='navbar__link'
               >
                 Dishes
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                activeClassName='navbar__link--active'
+                className='navbar__link'
+                to='/cart'
+              >
+                Cart
               </NavLink>
             </NavItem>
           </Nav>
