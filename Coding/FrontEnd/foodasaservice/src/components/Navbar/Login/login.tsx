@@ -84,7 +84,7 @@ const Login = props => {
         {loader}
       </Button>
       <Modal
-        style={{ position: 'relative', top: '17%', left: '-2%' }}
+        style={{ position: 'relative', top: '17%', left: '-2%', width: '80%' }}
         isOpen={modal}
         toggle={toggle}
       >
@@ -93,11 +93,15 @@ const Login = props => {
         </ModalHeader>
         <ModalBody>
           <Form onSubmit={handleLoginSubmit}>
+            <Label
+              style={{ padding: '0', marginBottom: '5px', fontWeight: 'bold' }}
+              for='email'
+              sm={4}
+            >
+              Email:
+            </Label>
             <FormGroup row>
-              <Label for='exampleEmail' sm={2}>
-                Email
-              </Label>
-              <Col sm={10}>
+              <Col sm={12}>
                 <Input
                   type='email'
                   name='email'
@@ -107,11 +111,15 @@ const Login = props => {
                 />
               </Col>
             </FormGroup>
+            <Label
+              style={{ padding: '0', marginBottom: '5px', fontWeight: 'bold' }}
+              for='email'
+              sm={4}
+            >
+              Password:
+            </Label>
             <FormGroup row>
-              <Label for='examplePassword' sm={2}>
-                Password
-              </Label>
-              <Col sm={10}>
+              <Col sm={12}>
                 <Input
                   type='password'
                   name='password'
@@ -126,10 +134,19 @@ const Login = props => {
               color='danger'
               onClick={toggle}
               type='submit'
-              style={{ position: 'relative', left: '40%' }}
+              style={{ position: 'relative', width: '100%' }}
             >
               Login
             </Button>
+            <p
+              style={{
+                textAlign: 'center',
+                color: '#3464a8',
+                marginTop: '10px'
+              }}
+            >
+              Forgot Password?
+            </p>
           </Form>
         </ModalBody>
         <ModalFooter>
@@ -144,7 +161,7 @@ const Login = props => {
 
       {/* SignUp Modal */}
       <Modal
-        style={{ position: 'relative', top: '10%', left: '-2%' }}
+        style={{ position: 'relative', top: '17%', left: '-2%' }}
         isOpen={nestedModal}
         toggle={toggleNested}
         onClosed={closeAll ? toggle : undefined}
