@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Card, CardText, CardTitle, Badge } from 'reactstrap';
 import { connect } from 'react-redux';
+import { Card, CardText, CardTitle, Badge, Button } from 'reactstrap';
 
-import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
+import { fetchAllDishes, DetailsToCart } from 'Redux/ActionCreators/Dishes';
+
 import like from 'assests/images/like.png';
 
 const DishDetail = props => {
-  const { match, location, history, allDishes, fetchAllDishes } = props;
+  const { match, allDishes } = props;
 
   let dishDetail;
   if (allDishes.DishList.length > 0) {
@@ -23,7 +24,9 @@ const DishDetail = props => {
       });
     }
   }
-
+  const handleAddToCart = (name, price) => {
+    props.detailsToCart({ name, price });
+  };
   return (
     <div
       style={{
@@ -53,6 +56,7 @@ const DishDetail = props => {
           }}
           src={dishDetail.img}
         ></img>
+
         <div>
           {' '}
           <CardTitle style={{ fontWeight: 'bold' }}>
@@ -67,6 +71,7 @@ const DishDetail = props => {
               {' '}
               {dishDetail.dish_name}
             </h6>
+
             <div style={{ position: 'absolute', top: '36%', left: '45%' }}>
               <img
                 src={like}
@@ -81,6 +86,15 @@ const DishDetail = props => {
               </Badge>
             </div>
           </CardTitle>
+          <Button
+            onClick={() =>
+              handleAddToCart(dishDetail.dish_name, dishDetail.price)
+            }
+            color='danger'
+            style={{ position: 'absolute', left: '86%', top: '34%' }}
+          >
+            Add To Cart
+          </Button>
           <CardText
             style={{ position: 'absolute', top: '46%', paddingRight: '10px' }}
           >
@@ -105,13 +119,18 @@ const mapStateToProps = state => {
   return {
     allDishes: state.allDishes,
     account: state.account,
-    cuisines: state.cuisine
+    cuisines: state.cuisine,
+    cart: state.cart
   };
 };
+
 const mapDispatchToProps = dispatch => {
   return {
     fetchAllDishes: () => {
       dispatch(fetchAllDishes());
+    },
+    detailsToCart: value => {
+      dispatch(DetailsToCart(value));
     }
   };
 };

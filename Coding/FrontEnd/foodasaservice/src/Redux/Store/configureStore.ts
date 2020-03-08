@@ -7,7 +7,7 @@ import { TopChef } from 'Redux/Reducers/topChefs';
 import { Cuisines } from 'Redux/Reducers/cuisines';
 import { Account } from 'Redux/Reducers/account';
 import { AllDishes } from 'Redux/Reducers/allDishes';
-
+import { Cart } from 'Redux/Reducers/cart';
 const composeEnhancers =
   ((window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose) &&
     (window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']({
@@ -23,7 +23,8 @@ export const ConfigureStore = () => {
       topChef: TopChef,
       cuisine: Cuisines,
       account: Account,
-      allDishes: AllDishes
+      allDishes: AllDishes,
+      cart: Cart
     }),
     // composeEnhancers(applyMiddleware(thunk, logger))
     composeEnhancers(applyMiddleware(thunk))
