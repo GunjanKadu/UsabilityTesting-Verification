@@ -9,8 +9,6 @@ export const fetchTopCooks = () => dispatch => {
       .get(baseURL + '/homepage')
       .then(
         (response: AxiosResponse) => {
-          console.log(response);
-
           return response;
         },
         error => {

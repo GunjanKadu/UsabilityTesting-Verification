@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './searchBar.css';
 import { useAlert } from 'react-alert';
 
 const SearchBar = () => {
+  const [input, setInput] = useState();
+  let show = false;
+  const handleChange = event => {
+    show = true;
+    setInput(event.target.value);
+  };
   return (
     <div className='s01'>
       <form>
@@ -20,7 +26,9 @@ const SearchBar = () => {
             <input
               id='search'
               type='text'
+              value={input}
               placeholder='What are you looking for?'
+              onChange={handleChange}
             />
           </div>
           {/* <div className='input-field second-wrap'>
@@ -31,6 +39,13 @@ const SearchBar = () => {
               Search
             </button>
           </div>
+          {show ? (
+            <div>
+              <button className='btn-search' type='button'>
+                Hello
+              </button>
+            </div>
+          ) : null}
         </div>
       </form>
     </div>

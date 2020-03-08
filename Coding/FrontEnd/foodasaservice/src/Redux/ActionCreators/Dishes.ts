@@ -10,7 +10,6 @@ export const fetchTopDishes = () => dispatch => {
       .get(baseURL + '/homepage')
       .then(
         (response: AxiosResponse) => {
-          console.log(response);
           return response;
         },
         error => {
@@ -53,7 +52,6 @@ export const fetchAllDishes = () => dispatch => {
       .get(baseURL + '/dishlisting')
       .then(
         (response: AxiosResponse) => {
-          console.log(response);
           return response;
         },
         error => {
