@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './searchBar.css';
 import { useAlert } from 'react-alert';
-
+import searchBarIcon from 'assests/images/searchBarIcon.png';
 const SearchBar = () => {
   const [input, setInput] = useState();
   let show = false;
@@ -22,7 +22,7 @@ const SearchBar = () => {
             <img
               className='dish'
               style={{ height: '40px', width: '40px' }}
-              src='https://image.flaticon.com/icons/png/512/33/33059.png'
+              src={searchBarIcon}
               alt=''
             />
             <input
