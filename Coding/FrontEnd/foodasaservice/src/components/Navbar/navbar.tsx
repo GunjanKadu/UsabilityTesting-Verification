@@ -8,17 +8,24 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Button,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
   Spinner
 } from 'reactstrap';
 import Login from 'components/Navbar/Login/login';
 import navIcon from 'assests/images/navIcon.png';
 import { addValidation, logOut } from 'Redux/ActionCreators/Login';
+import { useAlert } from 'react-alert';
+import UserIcon from 'assests/images/UserIcon.png';
 
 import './navbar.css';
-import { useAlert } from 'react-alert';
-
 const NavbarComponent = props => {
+  //DropDown
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropDown = () => setDropdownOpen(prevState => !prevState);
+
   //Alerts
   const alert = useAlert();
   const LoginSuccess = () =>
@@ -86,11 +93,13 @@ const NavbarComponent = props => {
   if (isAccountLoading) {
     loader = (
       <div>
-        <Spinner size='sm' color='light' />
+        <Spinner color='dark' style={{ width: '1.5rem', height: '1.5rem' }} />
       </div>
     );
   } else {
-    loader = <span>Logout</span>;
+    loader = (
+      <img src={UserIcon} alt='' style={{ height: '45px', width: '45px' }} />
+    );
   }
   return (
     <div>
@@ -128,10 +137,37 @@ const NavbarComponent = props => {
             </NavItem>
           </Nav>
           {validated ? (
-            <Button className='danger' onClick={handleLogout}>
-              {loader}
-            </Button>
+            <Dropdown isOpen={dropdownOpen} toggle={toggleDropDown}>
+              <DropdownToggle
+                caret
+                color='grey'
+                style={{
+                  backgroundColor: 'transparent',
+                  borderColor: 'transparent'
+                }}
+              >
+                {loader}
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem header>Header</DropdownItem>
+                <DropdownItem>Some Action</DropdownItem>
+                <DropdownItem disabled>Action (disabled)</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem
+                  onClick={handleLogout}
+                  style={{ color: '#dc3545' }}
+                >
+                  Logout
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           ) : (
+            // <div>
+
+            //   <Button className='danger' onClick={handleLogout}>
+            //     {loader}
+            //   </Button>
+            // </div>
             <Login buttonLabel='Login' title='Login' />
           )}
         </Collapse>
