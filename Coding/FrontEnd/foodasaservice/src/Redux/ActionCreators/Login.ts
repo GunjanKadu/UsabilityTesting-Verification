@@ -36,6 +36,7 @@ export const postLoginData = (email, password) => dispatch => {
       sessionStorage.setItem('userToken', response.data.token);
       dispatch(userDataFromJwt(decoded));
       sessionStorage.setItem('userData', JSON.stringify(decoded));
+      sessionStorage.setItem('userPresent', 'true');
       dispatch(addLoginData(response.data));
       dispatch(addValidation(true));
       dispatch(accountLoading(false));

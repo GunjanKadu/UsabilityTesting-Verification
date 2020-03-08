@@ -64,12 +64,21 @@ const NavbarComponent = props => {
   useEffect(() => {
     if (sessionStorage.getItem('userToken')) {
       props.addValidation(true);
+    } else {
+      props.addValidation(false);
+    }
+  }, [props.account.LoginDetailsSuccess.token, props.account.isValidated]);
+  useEffect(() => {
+    if (
+      sessionStorage.getItem('userToken') &&
+      sessionStorage.getItem('userPresent')
+    ) {
       LoginSuccess();
       setTimeout(() => {
         LoginSuccessWelcome();
       }, 1000);
-    } else {
-      props.addValidation(false);
+
+      sessionStorage.removeItem('userPresent');
     }
   }, [props.account.LoginDetailsSuccess.token, props.account.isValidated]);
   useEffect(() => {
@@ -142,6 +151,7 @@ const NavbarComponent = props => {
                 caret
                 color='grey'
                 style={{
+                  border: '0',
                   backgroundColor: 'transparent',
                   borderColor: 'transparent'
                 }}
@@ -162,12 +172,6 @@ const NavbarComponent = props => {
               </DropdownMenu>
             </Dropdown>
           ) : (
-            // <div>
-
-            //   <Button className='danger' onClick={handleLogout}>
-            //     {loader}
-            //   </Button>
-            // </div>
             <Login buttonLabel='Login' title='Login' />
           )}
         </Collapse>
