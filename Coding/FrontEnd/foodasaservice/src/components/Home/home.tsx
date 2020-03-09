@@ -16,7 +16,7 @@ const Home = () => {
         </div>
         <img className='HomeDish' src={HomePageImage} alt='Home Dish' />
       </div>
-      <div className='container'>
+      <div className='container' style={{ marginTop: '-10%' }}>
         <div className='row'>
           <div className='col-md-6'>
             <TrendingDishes />
@@ -26,9 +26,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <div className='working'>
-        <Working />
+      <div className='container'>
+        <div className='row'>
+          <div className='working'>
+            <Working />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -2,24 +2,25 @@
   position: relative;
 }
 
-.whiteBack {
+/* .whiteBack {
   position: absolute;
   background-color: #f8f9fa !important;
   height: 11em;
   width: 100vw;
-}
+} */
 
 .HomeDish {
-  width: 100vw;
+  width: 100%;
+  height: 100%;
 }
 
 .searchBar {
   position: absolute;
-  left: 30vw;
-  top: 2vh;
-  width: 40em;
+  left: 30%;
+  top: 5%;
+  width: 40%;
 }
-
+/* 
 
 
 .working {
@@ -27,4 +28,4 @@
   position: absolute;
   top: 200%;
   height: 100vh;
-}
+} */
