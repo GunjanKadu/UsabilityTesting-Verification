@@ -5,7 +5,7 @@ import { Card, CardText, CardTitle, Badge, Button } from 'reactstrap';
 
 import { fetchAllDishes, DetailsToCart } from 'Redux/ActionCreators/Dishes';
 
-import like from 'assests/images/like.png';
+import like from 'assets/images/like.png';
 
 const DishDetail = props => {
   const { match, allDishes } = props;

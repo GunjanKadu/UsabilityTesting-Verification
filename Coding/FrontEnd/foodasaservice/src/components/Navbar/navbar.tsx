@@ -15,10 +15,10 @@ import {
   Spinner
 } from 'reactstrap';
 import Login from 'components/Navbar/Login/login';
-import navIcon from 'assests/images/navIcon.png';
+import navIcon from 'assets/images/navIcon.png';
 import { addValidation, logOut } from 'Redux/ActionCreators/Login';
 import { useAlert } from 'react-alert';
-import UserIcon from 'assests/images/UserIcon.png';
+import UserIcon from 'assets/images/UserIcon.png';
 
 import './navbar.css';
 const NavbarComponent = props => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './searchBar.css';
 import { useAlert } from 'react-alert';
-import searchBarIcon from 'assests/images/searchBarIcon.png';
+import searchBarIcon from 'assets/images/searchBarIcon.png';
 const SearchBar = () => {
   const [input, setInput] = useState();
   let show = false;

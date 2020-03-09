@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toast, ToastBody, ToastHeader, Row, Col, Input } from 'reactstrap';
-import COD from 'assests/images/COD.png';
-import OnlinePayment from 'assests/images/OnlinePayment.png';
+import COD from 'assets/images/COD.png';
+import OnlinePayment from 'assets/images/OnlinePayment.png';
 
 const Account = () => {
   return (

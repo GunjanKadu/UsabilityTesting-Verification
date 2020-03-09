@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
-import like from 'assests/images/like.png';
+import like from 'assets/images/like.png';
 
 const DishItem = props => {
   const { match, inputValue } = props;
