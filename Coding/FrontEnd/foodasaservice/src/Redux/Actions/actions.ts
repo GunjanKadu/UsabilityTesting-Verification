@@ -36,3 +36,5 @@ export const FETCH_ALL_DISHES_LOADING = 'FETCH_ALL_DISHES_LOADING;';
 
 ////*********************ADD TO CARTS****************************//
 export const ADD_DETAILS_TO_CART = 'ADD_DETAILS_TO_CART';
+export const DISABLE_CART_ALERT = 'DISABLE_CART_ALERT';
+export const ENABLE_CART_ALERT = 'ENABLE_CART_ALERT';

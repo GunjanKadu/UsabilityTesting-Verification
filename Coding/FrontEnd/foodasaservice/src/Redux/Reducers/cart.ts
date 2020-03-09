@@ -2,7 +2,8 @@ import * as ActionTypes from 'Redux/Actions/actions';
 
 export const Cart = (
   state = {
-    CartContent: []
+    CartContent: [],
+    CardAlert: true
   },
   action
 ) => {
@@ -12,6 +13,16 @@ export const Cart = (
       return {
         ...state,
         CartContent: [...state.CartContent, action.payload]
+      };
+    case ActionTypes.DISABLE_CART_ALERT:
+      return {
+        ...state,
+        CardAlert: action.payload
+      };
+    case ActionTypes.ENABLE_CART_ALERT:
+      return {
+        ...state,
+        CardAlert: action.payload
       };
 
     default:
