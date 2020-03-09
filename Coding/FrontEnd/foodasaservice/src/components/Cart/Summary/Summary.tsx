@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Toast, ToastBody, ToastHeader, Row, Col } from 'reactstrap';
 
-const Summary = () => {
+const Summary = props => {
+  useEffect(() => {}, [props.cart.CartContent]);
+
+  const orderedItems = props.cart.CartContent;
+
+  const RenderItems = () => {
+    if (orderedItems.length > 0) {
+      return orderedItems.map(item => {
+        return (
+          <ToastBody>
+            {item.name} {item.price}{' '}
+          </ToastBody>
+        );
+      });
+    } else {
+      return (
+        <ToastBody>
+          Choose delicious dishes from the menu and order your menu.{' '}
+        </ToastBody>
+      );
+    }
+  };
   return (
     <div>
       <h4 style={{ position: 'relative', left: '1%', width: 'fit-content' }}>
@@ -11,9 +33,7 @@ const Summary = () => {
         <Col sm={12}>
           <Toast>
             <ToastHeader>Ordered Dishes</ToastHeader>
-            <ToastBody>
-              Choose delicious dishes from the menu and order your menu.{' '}
-            </ToastBody>
+            <RenderItems />
           </Toast>
         </Col>
       </Row>
@@ -55,4 +75,13 @@ const Summary = () => {
   );
 };
 
-export default Summary;
+const mapStateToProps = state => {
+  return {
+    allDishes: state.allDishes,
+    account: state.account,
+    cuisines: state.cuisine,
+    cart: state.cart
+  };
+};
+
+export default connect(mapStateToProps)(Summary);
