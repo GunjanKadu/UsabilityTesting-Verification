@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Card, CardText, CardTitle, Badge, Button } from 'reactstrap';
 import { useAlert } from 'react-alert';
 
-import { fetchAllDishes, DetailsToCart } from 'Redux/ActionCreators/Dishes';
-
+import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
+import { DetailsToCart, EnableCartAlert } from 'Redux/ActionCreators/Cart';
 import like from 'assets/images/like.png';
 
 const DishDetail = props => {
@@ -35,8 +35,8 @@ const DishDetail = props => {
       });
     }
   }
-  const handleAddToCart = (name, price) => {
-    props.detailsToCart({ name, price });
+  const handleAddToCart = (id, name, price) => {
+    props.detailsToCart({ id, name, price });
   };
   return (
     <div
@@ -100,8 +100,13 @@ const DishDetail = props => {
           <Button
             onClick={() => {
               return (
-                handleAddToCart(dishDetail.dish_name, dishDetail.price),
-                AddedToCartSuccess(dishDetail.dish_name)
+                handleAddToCart(
+                  dishDetail.id,
+                  dishDetail.dish_name,
+                  dishDetail.price
+                ),
+                AddedToCartSuccess(dishDetail.dish_name),
+                props.enableCartAlert()
               );
             }}
             color='danger'
@@ -145,6 +150,9 @@ const mapDispatchToProps = dispatch => {
     },
     detailsToCart: value => {
       dispatch(DetailsToCart(value));
+    },
+    enableCartAlert: () => {
+      dispatch(EnableCartAlert());
     }
   };
 };

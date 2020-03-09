@@ -12,13 +12,16 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Spinner
+  Spinner,
+  Badge
 } from 'reactstrap';
-import Login from 'components/Navbar/Login/login';
-import navIcon from 'assets/images/navIcon.png';
-import { addValidation, logOut } from 'Redux/ActionCreators/Login';
 import { useAlert } from 'react-alert';
+
+import { addValidation, logOut } from 'Redux/ActionCreators/Login';
+
+import Login from 'components/Navbar/Login/login';
 import UserIcon from 'assets/images/UserIcon.png';
+import navIcon from 'assets/images/navIcon.png';
 
 import './navbar.css';
 const NavbarComponent = props => {
@@ -66,6 +69,7 @@ const NavbarComponent = props => {
       type: 'success',
       transition: 'fade'
     });
+
   //Validated
   const [isOpen, setIsOpen] = useState(false);
 
@@ -104,6 +108,8 @@ const NavbarComponent = props => {
     }
   }, [props.account.isSuccessfullyAdded]);
 
+  const showCartAlert = props.cart.CardAlert;
+  const noOfCartItems = props.cart.CartContent.length;
   const toggle = () => setIsOpen(!isOpen);
 
   const handleLogout = () => {
@@ -152,7 +158,7 @@ const NavbarComponent = props => {
                 Dishes
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem style={{ position: 'relative' }}>
               <NavLink
                 activeClassName='navbar__link--active'
                 className='navbar__link'
@@ -160,6 +166,14 @@ const NavbarComponent = props => {
               >
                 Cart
               </NavLink>
+              {noOfCartItems && showCartAlert ? (
+                <Badge
+                  style={{ position: 'absolute', left: '75%', top: '-30%' }}
+                  color='danger'
+                >
+                  {noOfCartItems}
+                </Badge>
+              ) : null}
             </NavItem>
           </Nav>
           {validated ? (
@@ -208,7 +222,8 @@ const mapDispatchToProps = dispatch => {
 };
 const mapStateToProps = state => {
   return {
-    account: state.account
+    account: state.account,
+    cart: state.cart
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(NavbarComponent);

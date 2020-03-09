@@ -11,8 +11,9 @@ const Summary = props => {
     if (orderedItems.length > 0) {
       return orderedItems.map(item => {
         return (
-          <ToastBody>
-            {item.name} {item.price}{' '}
+          <ToastBody key={item.id}>
+            <span style={{ fontWeight: 'bold' }}>{item.name}</span>{' '}
+            <span style={{ marginLeft: '70%' }}> € {item.price}</span>
           </ToastBody>
         );
       });
