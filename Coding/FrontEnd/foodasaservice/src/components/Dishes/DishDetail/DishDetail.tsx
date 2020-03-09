@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, CardText, CardTitle, Badge, Button } from 'reactstrap';
+import { useAlert } from 'react-alert';
 
 import { fetchAllDishes, DetailsToCart } from 'Redux/ActionCreators/Dishes';
 
@@ -9,7 +10,17 @@ import like from 'assets/images/like.png';
 
 const DishDetail = props => {
   const { match, allDishes } = props;
+  const alert = useAlert();
 
+  const AddedToCartSuccess = name =>
+    alert.show(
+      <div style={{ fontSize: '14px' }}>{name} Has Been Added To Cart.</div>,
+      {
+        timeout: 3000,
+        type: 'success',
+        transition: 'fade'
+      }
+    );
   let dishDetail;
   if (allDishes.DishList.length > 0) {
     if (match.params.id) {
@@ -87,9 +98,12 @@ const DishDetail = props => {
             </div>
           </CardTitle>
           <Button
-            onClick={() =>
-              handleAddToCart(dishDetail.dish_name, dishDetail.price)
-            }
+            onClick={() => {
+              return (
+                handleAddToCart(dishDetail.dish_name, dishDetail.price),
+                AddedToCartSuccess(dishDetail.dish_name)
+              );
+            }}
             color='danger'
             style={{ position: 'absolute', left: '86%', top: '34%' }}
           >
