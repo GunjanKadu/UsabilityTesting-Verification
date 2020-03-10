@@ -121,7 +121,7 @@ const DishItem = props => {
                         style={{
                           position: "absolute",
                           top: "111%",
-                          right: "86%"
+                          right: "19vw"
                         }}
                       >
                         Price: € {item.price}
@@ -131,7 +131,7 @@ const DishItem = props => {
                         style={{
                           position: "absolute",
                           top: "111%",
-                          right: "67%"
+                          right: "14vw"
                         }}
                       >
                         Spice : {item.spicy}/5
@@ -142,7 +142,7 @@ const DishItem = props => {
                         style={{
                           position: "absolute",
                           top: "111%",
-                          right: "43%"
+                          right: "8vw"
                         }}
                       >
                         Chef : {item.chef_name}
@@ -153,7 +153,7 @@ const DishItem = props => {
                           style={{
                             position: "absolute",
                             top: "111%",
-                            right: "-3%"
+                            right: "0vw"
                           }}
                         >
                           Available
@@ -164,7 +164,7 @@ const DishItem = props => {
                           style={{
                             position: "absolute",
                             top: "111%",
-                            right: "-3%"
+                            right: "0vw"
                           }}
                         >
                           Not-Available
@@ -180,7 +180,7 @@ const DishItem = props => {
       }
       if (
         inputValue !== "" &&
-        item.dish_name.toLowerCase().indexOf(inputValue) !== -1
+        item.dish_name.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1
       ) {
         // Cuisines Array in Each Dish
         const cuisinesInEachDish = item.cuisine;
@@ -286,7 +286,7 @@ const DishItem = props => {
                         style={{
                           position: "absolute",
                           top: "111%",
-                          right: "86%"
+                          right: "19vw"
                         }}
                       >
                         Price: € {item.price}
@@ -296,7 +296,7 @@ const DishItem = props => {
                         style={{
                           position: "absolute",
                           top: "111%",
-                          right: "67%"
+                          right: "14vw"
                         }}
                       >
                         Spice : {item.spicy}/5
@@ -307,7 +307,7 @@ const DishItem = props => {
                         style={{
                           position: "absolute",
                           top: "111%",
-                          right: "43%"
+                          right: "8vw"
                         }}
                       >
                         Chef : {item.chef_name}
@@ -318,7 +318,7 @@ const DishItem = props => {
                           style={{
                             position: "absolute",
                             top: "111%",
-                            right: "-3%"
+                            right: "0vw"
                           }}
                         >
                           Available
@@ -329,7 +329,7 @@ const DishItem = props => {
                           style={{
                             position: "absolute",
                             top: "111%",
-                            right: "-3%"
+                            right: "0vw"
                           }}
                         >
                           Not-Available
