@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { Card, CardText, CardTitle, Badge, Spinner } from 'reactstrap';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { Card, CardTitle, Badge, Spinner, Row } from "reactstrap";
+import { connect } from "react-redux";
 
-import { Link, NavLink, withRouter } from 'react-router-dom';
-import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
-import like from 'assets/images/like.png';
+import { Link, NavLink, withRouter } from "react-router-dom";
+import { fetchAllDishes } from "Redux/ActionCreators/Dishes";
+import like from "assets/images/like.png";
 
 const DishItem = props => {
   const { match, inputValue } = props;
@@ -36,64 +36,141 @@ const DishItem = props => {
         //Rendering Each Cuisines for Dish
         const CuisinesNames = () => {
           return cuisineOfEachDish.map(name => {
-            return (
-              <span key={name.id}>
-                {name.name} {''} {''}{' '}
-              </span>
-            );
+            return <span key={name.id}>{name.name} &nbsp;</span>;
           });
         };
 
         return (
-          <div key={item.id} style={{ cursor: 'pointer' }}>
+          <div
+            key={item.id}
+            style={{ cursor: "pointer", position: "relative" }}
+          >
             <NavLink
-              activeStyle={{ color: '#dc3545', fontWeight: 'bold' }}
+              activeStyle={{ color: "#dc3545", fontWeight: "bold" }}
               to={`${match.url}/${item.id}`}
-              style={{ textDecoration: 'none', color: 'black' }}
+              style={{ textDecoration: "none", color: "black" }}
             >
               <Card
                 body
                 style={{
-                  backgroundColor: 'white',
-                  marginBottom: '4px',
-                  borderRadius: '4px',
-                  height: '100px'
+                  backgroundColor: "white",
+                  marginBottom: "4px",
+                  borderRadius: "4px",
+                  height: "100px"
                 }}
               >
                 <img
                   style={{
-                    position: 'absolute',
-                    left: '0px',
-                    top: '0px',
-                    width: '25%',
-                    height: '100%'
+                    position: "absolute",
+                    left: "0px",
+                    top: "0px",
+                    width: "25%",
+                    height: "100%"
                   }}
                   src={item.img}
                 ></img>
                 <div
                   style={{
-                    width: '70%',
-                    height: '90%',
-                    position: 'relative',
-                    left: '30%'
+                    width: "70%",
+                    height: "90%",
+                    position: "relative",
+                    left: "30%"
                   }}
                 >
-                  {' '}
-                  <CardTitle style={{ fontWeight: 'bold' }}>
-                    <h6 style={{ color: 'black' }}> {item.dish_name}</h6>
-                    <CuisinesNames />
-                    <img
-                      src={like}
-                      style={{ height: '15px', width: '15px' }}
-                      alt=''
-                    />
-
-                    <Badge
-                      href='#'
-                      style={{ backgroundColor: '#e5e5e5', color: 'black' }}
+                  {" "}
+                  <CardTitle>
+                    <Row>
+                      <h6
+                        style={{
+                          color: "black",
+                          marginTop: "-4%",
+                          fontWeight: "bold"
+                        }}
+                      >
+                        {" "}
+                        {item.dish_name}
+                      </h6>
+                    </Row>
+                    <Row style={{ marginTop: "-2%" }}>
+                      <CuisinesNames />
+                    </Row>
+                    <div
+                      style={{
+                        display: "block",
+                        position: "absolute",
+                        left: " 88%",
+                        top: "-40% "
+                      }}
                     >
-                      {item.likes}
-                    </Badge>
+                      <img
+                        src={like}
+                        style={{ height: "15px", width: "15px" }}
+                        alt=""
+                      />{" "}
+                      <Badge
+                        href="#"
+                        style={{ backgroundColor: "#e5e5e5", color: "black" }}
+                      >
+                        {item.likes}
+                      </Badge>
+                    </div>
+
+                    <Row>
+                      <Badge
+                        color="info"
+                        style={{
+                          position: "absolute",
+                          top: "111%",
+                          right: "86%"
+                        }}
+                      >
+                        Price: € {item.price}
+                      </Badge>
+                      <Badge
+                        color="danger"
+                        style={{
+                          position: "absolute",
+                          top: "111%",
+                          right: "67%"
+                        }}
+                      >
+                        Spice : {item.spicy}/5
+                      </Badge>
+
+                      <Badge
+                        color="primary"
+                        style={{
+                          position: "absolute",
+                          top: "111%",
+                          right: "43%"
+                        }}
+                      >
+                        Chef : {item.chef_name}
+                      </Badge>
+                      {item.available ? (
+                        <Badge
+                          color="success"
+                          style={{
+                            position: "absolute",
+                            top: "111%",
+                            right: "-3%"
+                          }}
+                        >
+                          Available
+                        </Badge>
+                      ) : (
+                        <Badge
+                          color="success"
+                          style={{
+                            position: "absolute",
+                            top: "111%",
+                            right: "-3%"
+                          }}
+                        >
+                          Not-Available
+                        </Badge>
+                      )}
+                    </Row>
                   </CardTitle>
                 </div>
               </Card>
@@ -102,7 +179,7 @@ const DishItem = props => {
         );
       }
       if (
-        inputValue !== '' &&
+        inputValue !== "" &&
         item.dish_name.toLowerCase().indexOf(inputValue) !== -1
       ) {
         // Cuisines Array in Each Dish
@@ -122,62 +199,143 @@ const DishItem = props => {
           return cuisineOfEachDish.map(name => {
             return (
               <span key={name.id}>
-                {name.name} {''} {''}{' '}
+                {name.name} {""} {""}{" "}
               </span>
             );
           });
         };
 
         return (
-          <div key={item.id} style={{ cursor: 'pointer' }}>
+          <div
+            key={item.id}
+            style={{ cursor: "pointer", position: "relative" }}
+          >
             <NavLink
+              activeStyle={{ color: "#dc3545", fontWeight: "bold" }}
               to={`${match.url}/${item.id}`}
-              activeStyle={{ color: 'red' }}
-              style={{ textDecoration: 'none', color: 'black' }}
+              style={{ textDecoration: "none", color: "black" }}
             >
               <Card
                 body
                 style={{
-                  backgroundColor: 'white',
-                  borderRadius: '4px',
-                  height: '100px',
-                  marginBottom: '3px'
+                  backgroundColor: "white",
+                  marginBottom: "4px",
+                  borderRadius: "4px",
+                  height: "100px"
                 }}
               >
                 <img
                   style={{
-                    position: 'absolute',
-                    left: '0px',
-                    top: '0px',
-                    width: '25%',
-                    height: '100%'
+                    position: "absolute",
+                    left: "0px",
+                    top: "0px",
+                    width: "25%",
+                    height: "100%"
                   }}
                   src={item.img}
                 ></img>
                 <div
                   style={{
-                    width: '70%',
-                    height: '90%',
-                    position: 'relative',
-                    left: '30%'
+                    width: "70%",
+                    height: "90%",
+                    position: "relative",
+                    left: "30%"
                   }}
                 >
-                  {' '}
-                  <CardTitle style={{ fontWeight: 'bold' }}>
-                    <h6 style={{ color: '#dc3545' }}> {item.dish_name}</h6>
-                    <CuisinesNames />
-                    <img
-                      src={like}
-                      style={{ height: '15px', width: '15px' }}
-                      alt=''
-                    />
-
-                    <Badge
-                      href='#'
-                      style={{ backgroundColor: '#e5e5e5', color: 'black' }}
+                  {" "}
+                  <CardTitle>
+                    <Row>
+                      <h6
+                        style={{
+                          color: "black",
+                          marginTop: "-4%",
+                          fontWeight: "bold"
+                        }}
+                      >
+                        {" "}
+                        {item.dish_name}
+                      </h6>
+                    </Row>
+                    <Row style={{ marginTop: "-2%" }}>
+                      <CuisinesNames />
+                    </Row>
+                    <div
+                      style={{
+                        display: "block",
+                        position: "absolute",
+                        left: " 88%",
+                        top: "-40% "
+                      }}
                     >
-                      {item.likes}
-                    </Badge>
+                      <img
+                        src={like}
+                        style={{ height: "15px", width: "15px" }}
+                        alt=""
+                      />{" "}
+                      <Badge
+                        href="#"
+                        style={{ backgroundColor: "#e5e5e5", color: "black" }}
+                      >
+                        {item.likes}
+                      </Badge>
+                    </div>
+
+                    <Row>
+                      <Badge
+                        color="info"
+                        style={{
+                          position: "absolute",
+                          top: "111%",
+                          right: "86%"
+                        }}
+                      >
+                        Price: € {item.price}
+                      </Badge>
+                      <Badge
+                        color="danger"
+                        style={{
+                          position: "absolute",
+                          top: "111%",
+                          right: "67%"
+                        }}
+                      >
+                        Spice : {item.spicy}/5
+                      </Badge>
+
+                      <Badge
+                        color="primary"
+                        style={{
+                          position: "absolute",
+                          top: "111%",
+                          right: "43%"
+                        }}
+                      >
+                        Chef : {item.chef_name}
+                      </Badge>
+                      {item.available ? (
+                        <Badge
+                          color="success"
+                          style={{
+                            position: "absolute",
+                            top: "111%",
+                            right: "-3%"
+                          }}
+                        >
+                          Available
+                        </Badge>
+                      ) : (
+                        <Badge
+                          color="success"
+                          style={{
+                            position: "absolute",
+                            top: "111%",
+                            right: "-3%"
+                          }}
+                        >
+                          Not-Available
+                        </Badge>
+                      )}
+                    </Row>
                   </CardTitle>
                 </div>
               </Card>
@@ -186,16 +344,22 @@ const DishItem = props => {
         );
       }
     });
+
     return <>{renderDishItems}</>;
   };
 
   return (
-    <div style={{ height: '80vh', overflow: 'auto', marginLeft: '2%' }}>
+    <div style={{ height: "80vh", overflow: "auto", marginLeft: "2%" }}>
       {props.allDishes.IsLoading ? (
         <Spinner
-          style={{ width: '5rem', height: '5rem' }}
-          type='grow'
-          color='danger'
+          style={{
+            width: "3rem",
+            height: "3rem",
+            position: "absolute",
+            left: "41%",
+            top: "43%"
+          }}
+          color="danger"
         />
       ) : (
         <RenderDishesItems />

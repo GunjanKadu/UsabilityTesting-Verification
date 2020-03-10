@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Route } from "react-router-dom";
 
-import DishList from 'components/Dishes/DishList/DishList';
-import DishDetail from 'components/Dishes/DishDetail/DishDetail';
-import SearchBar from 'components/Dishes/SearchBar/SearchBar';
-import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
+import DishList from "components/Dishes/DishList/DishList";
+import DishDetail from "components/Dishes/DishDetail/DishDetail";
+import SearchBar from "components/Dishes/SearchBar/SearchBar";
+import { fetchAllDishes } from "Redux/ActionCreators/Dishes";
 
 const Dish = props => {
   const [input, setInput] = useState();
@@ -14,24 +14,23 @@ const Dish = props => {
   }, []);
 
   const handleChange = event => {
-    console.log(input);
     setInput(event.target.value);
   };
 
   return (
-    <div style={{ position: 'relative', top: '13%', fontSize: 11 }}>
-      <div className='row'>
-        <div className='col-4' style={{ height: '80vh' }}>
+    <div style={{ position: "relative", top: "13%", fontSize: 15 }}>
+      <div className="row">
+        <div className="col-4" style={{ height: "80vh" }}>
           <SearchBar onChangeValue={handleChange} value={input} />
           <DishList inputValue={input} />
         </div>
         <div
-          className='col-6'
+          className="col-6"
           style={{
-            height: '80vh'
+            height: "80vh"
           }}
         >
-          <Route path='/dishes/:id' component={DishDetail} />
+          <Route path="/dishes/:id" component={DishDetail} />
         </div>
       </div>
     </div>
