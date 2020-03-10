@@ -1,52 +1,59 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Toast, ToastBody, ToastHeader, Row, Col, Badge } from "reactstrap";
-
+import { RemoveItemFromCart } from "Redux/ActionCreators/Cart";
 const Summary = props => {
-  useEffect(() => {}, [props.cart.CartContent]);
-
   const orderedItems = props.cart.CartContent;
   const price = props.cart.Price;
 
+  const removeHandler = id => {
+    let cartContent = props.cart.CartContent.filter(item => {
+      return item.id !== id;
+    });
+    props.removeItemFromCart(cartContent);
+  };
   const RenderItems = () => {
     if (orderedItems.length > 0) {
       return orderedItems.map(item => {
         return (
-          <ToastBody key={item.id} style={{ position: "relative" }}>
-            <Row>
-              <Col sm={3}>
-                <span style={{ fontWeight: "bold" }}>{item.name}</span>{" "}
-              </Col>
-              <Col sm={3}>
-                <span style={{ position: "relative", left: "30%" }}>
-                  {" "}
-                  € {item.price}
-                </span>
-              </Col>{" "}
-              <Col>
-                <span style={{ position: "relative", left: "30%" }}>
-                  {" "}
-                  <Badge
-                    color="danger"
-                    style={{
-                      fontWeight: "bold",
-                      position: "relative",
-                      left: "60%",
-                      top: "-6%",
-                      cursor: "pointer"
-                    }}
-                  >
-                    X
-                  </Badge>
-                </span>
-              </Col>
-            </Row>
-          </ToastBody>
+          <div key={item.id}>
+            <ToastBody style={{ position: "relative" }}>
+              <Row>
+                <Col sm={3}>
+                  <span style={{ fontWeight: "bold" }}>{item.name}</span>{" "}
+                </Col>
+                <Col sm={3}>
+                  <span style={{ position: "relative", left: "30%" }}>
+                    {" "}
+                    € {item.price}
+                  </span>
+                </Col>{" "}
+                <Col>
+                  <span style={{ position: "relative", left: "30%" }}>
+                    {" "}
+                    <Badge
+                      color="danger"
+                      style={{
+                        fontWeight: "bold",
+                        position: "relative",
+                        left: "60%",
+                        top: "-6%",
+                        cursor: "pointer"
+                      }}
+                      onClick={() => removeHandler(item.id)}
+                    >
+                      X
+                    </Badge>
+                  </span>
+                </Col>
+              </Row>
+            </ToastBody>
+          </div>
         );
       });
     } else {
       return (
-        <ToastBody>
+        <ToastBody key={1}>
           Choose delicious dishes from the menu and order your menu.{" "}
         </ToastBody>
       );
@@ -128,5 +135,11 @@ const mapStateToProps = state => {
     cart: state.cart
   };
 };
-
-export default connect(mapStateToProps)(Summary);
+const mapDispatchToProps = dispatch => {
+  return {
+    removeItemFromCart: value => {
+      dispatch(RemoveItemFromCart(value));
+    }
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Summary);

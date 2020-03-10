@@ -5,6 +5,7 @@ export const DetailsToCart = value => dispatch => {
   dispatch(AddPriceToCart(price));
   dispatch(AddDetailsToCart(value));
 };
+
 export const AddDetailsToCart = value => {
   return {
     type: ActionTypes.ADD_DETAILS_TO_CART,
@@ -36,5 +37,16 @@ const EnableAlert = () => {
   return {
     type: ActionTypes.ENABLE_CART_ALERT,
     payload: true
+  };
+};
+
+export const RemoveItemFromCart = value => dispatch => {
+  dispatch(RemoveItem(value));
+};
+
+const RemoveItem = id => {
+  return {
+    type: ActionTypes.REMOVE_ITEM_FROM_CART,
+    payload: id
   };
 };

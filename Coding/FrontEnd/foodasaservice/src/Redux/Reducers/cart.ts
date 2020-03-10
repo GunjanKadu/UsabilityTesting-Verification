@@ -9,7 +9,6 @@ export const Cart = (
   },
   action
 ) => {
-  console.log(action, "action");
   switch (action.type) {
     case ActionTypes.ADD_DETAILS_TO_CART:
       return {
@@ -30,6 +29,11 @@ export const Cart = (
       return {
         ...state,
         CardAlert: action.payload
+      };
+    case ActionTypes.REMOVE_ITEM_FROM_CART:
+      return {
+        ...state,
+        CartContent: [...action.payload]
       };
 
     default:

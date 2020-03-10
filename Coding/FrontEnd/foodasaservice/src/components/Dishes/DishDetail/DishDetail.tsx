@@ -29,12 +29,10 @@ const DishDetail = props => {
   if (allDishes.length > 0) {
     if (match.params.id) {
       dishDetail = allDishes.find(item => {
-        console.log(item.id);
         return item.id == match.params.id;
       });
     } else {
       dishDetail = allDishes.find(item => {
-        console.log(item.id);
         return item.id == 8;
       });
     }
