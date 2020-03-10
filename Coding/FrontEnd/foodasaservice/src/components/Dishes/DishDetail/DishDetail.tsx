@@ -1,28 +1,31 @@
-import React, { useEffect } from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { Card, CardText, CardTitle, Badge, Button, Spinner } from "reactstrap";
-import { useAlert } from "react-alert";
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Card, CardText, CardTitle, Badge, Button, Spinner } from 'reactstrap';
+import { useAlert } from 'react-alert';
 
-import { fetchAllDishes } from "Redux/ActionCreators/Dishes";
-import { DetailsToCart, EnableCartAlert } from "Redux/ActionCreators/Cart";
-import like from "assets/images/like.png";
+import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
+import { DetailsToCart, EnableCartAlert } from 'Redux/ActionCreators/Cart';
+import like from 'assets/images/like.png';
 
 const DishDetail = props => {
+  useEffect(() => {}, [props.cart.ContentAdded]);
   const allDishes = props.allDishes.DishList;
   const { match } = props;
-  const alert = useAlert();
-
-  const AddedToCartSuccess = name => {
-    alert.show(
-      <div style={{ fontSize: "14px" }}>{name} Has Been Added To Cart.</div>,
-      {
-        timeout: 3000,
-        type: "success",
-        transition: "fade"
-      }
-    );
-  };
+  const userId = sessionStorage.getItem('userId');
+  // const alert = useAlert();
+  // const AddedToCartSuccess = name => {
+  //   if (props.cart.ContentAdded) {
+  //     alert.show(
+  //       <div style={{ fontSize: '14px' }}>{name} Has Been Added To Cart.</div>,
+  //       {
+  //         timeout: 3000,
+  //         type: 'success',
+  //         transition: 'fade'
+  //       }
+  //     );
+  //   }
+  // };
 
   let dishDetail;
 
@@ -38,102 +41,114 @@ const DishDetail = props => {
     }
   }
 
-  const handleAddToCart = (id, name, price) => {
-    props.detailsToCart({ id, name, price });
+  const handleAddToCart = (userId, dishId, dishName, price) => {
+    props.detailsToCart({ userId, dishId, dishName, price });
   };
   return (
     <div
       style={{
-        position: "relative",
-        top: "6.5%",
-        width: "130%",
-        height: "100%"
+        position: 'relative',
+        top: '6.5%',
+        width: '130%',
+        height: '100%'
       }}
     >
       {dishDetail ? (
         <Card
           body
           style={{
-            backgroundColor: "white",
-            marginBottom: "5px",
-            borderRadius: "4px",
-            height: "100%",
-            border: "4px solid #ebebeb"
+            backgroundColor: 'white',
+            marginBottom: '5px',
+            borderRadius: '4px',
+            height: '100%',
+            border: '4px solid #ebebeb'
           }}
         >
           <img
             style={{
-              position: "absolute",
-              left: "0px",
-              top: "0px",
-              width: "100%",
-              height: "30%",
-              objectFit: "cover"
+              position: 'absolute',
+              left: '0px',
+              top: '0px',
+              width: '100%',
+              height: '30%',
+              objectFit: 'cover'
             }}
             src={dishDetail.img}
+            alt={dishDetail.dish_name}
           ></img>
 
           <div>
-            {" "}
-            <CardTitle style={{ fontWeight: "bold" }}>
+            {' '}
+            <CardTitle style={{ fontWeight: 'bold' }}>
               <h6
                 style={{
-                  color: "#dc3545",
-                  position: "absolute",
-                  top: "33%",
-                  left: "45%"
+                  color: '#dc3545',
+                  position: 'absolute',
+                  top: '33%',
+                  left: '45%'
                 }}
               >
-                {" "}
+                {' '}
                 {dishDetail.dish_name}
               </h6>
 
-              <div style={{ position: "absolute", top: "36%", left: "45%" }}>
+              <div style={{ position: 'absolute', top: '36%', left: '45%' }}>
                 <img
                   src={like}
-                  style={{ height: "50px", width: "50px" }}
-                  alt=""
+                  style={{ height: '50px', width: '50px' }}
+                  alt=''
                 />
                 <Badge
-                  href="#"
-                  style={{ backgroundColor: "#e5e5e5", color: "black" }}
+                  href='#'
+                  style={{ backgroundColor: '#e5e5e5', color: 'black' }}
                 >
                   {dishDetail.likes}
                 </Badge>
               </div>
             </CardTitle>
-            <Button
-              onClick={() => {
-                return (
-                  handleAddToCart(
-                    dishDetail.id,
-                    dishDetail.dish_name,
-                    dishDetail.price
-                  ),
-                  AddedToCartSuccess(dishDetail.dish_name),
-                  props.enableCartAlert()
-                );
-              }}
-              color="danger"
-              style={{ position: "absolute", left: "86%", top: "34%" }}
-            >
-              Add To Cart
-            </Button>
+            {userId ? (
+              <Button
+                onClick={() => {
+                  return (
+                    handleAddToCart(
+                      userId,
+                      dishDetail.id,
+                      dishDetail.dish_name,
+                      dishDetail.price
+                    ),
+                    // AddedToCartSuccess(dishDetail.dish_name),
+                    props.enableCartAlert()
+                  );
+                }}
+                color='danger'
+                style={{ position: 'absolute', left: '86%', top: '34%' }}
+              >
+                Add To Cart
+              </Button>
+            ) : (
+              <Button
+                disabled
+                color='danger'
+                style={{ position: 'absolute', left: '86%', top: '34%' }}
+              >
+                Add To Cart
+              </Button>
+            )}
             <CardText
-              style={{ position: "absolute", top: "46%", paddingRight: "10px" }}
+              style={{ position: 'absolute', top: '46%', paddingRight: '10px' }}
             >
               <Card
                 style={{
-                  border: "3px solid pink",
-                  padding: "5px"
+                  border: '3px solid pink',
+                  padding: '5px'
                 }}
               >
                 <CardText
                   body
                   style={{
-                    backgroundColor: "white",
-                    padding: "5px",
-                    fontWeight: "bold"
+                    backgroundColor: 'white',
+                    padding: '5px',
+                    fontWeight: 'bold'
                   }}
                 >
                   {dishDetail.description}
@@ -145,13 +160,13 @@ const DishDetail = props => {
       ) : (
         <Spinner
           style={{
-            width: "3rem",
-            height: "3rem",
-            position: "absolute",
-            left: "41%",
-            top: "43%"
+            width: '3rem',
+            height: '3rem',
+            position: 'absolute',
+            left: '41%',
+            top: '43%'
           }}
-          color="danger"
+          color='danger'
         />
       )}
     </div>

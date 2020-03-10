@@ -1,11 +1,13 @@
-import * as ActionTypes from "Redux/Actions/actions";
+import * as ActionTypes from 'Redux/Actions/actions';
 
 export const Cart = (
   state = {
     CartContent: [],
     CardAlert: true,
     Price: 0,
-    TotalPrice: 0
+    TotalPrice: 0,
+    CardAddedResponse: '',
+    ContentAdded: false
   },
   action
 ) => {
@@ -34,6 +36,16 @@ export const Cart = (
       return {
         ...state,
         CartContent: [...action.payload]
+      };
+    case ActionTypes.ADD_DETAILS_TO_CART_FAILED:
+      return {
+        ...state,
+        CardAddedResponse: action.payload
+      };
+    case ActionTypes.CONTENT_ADDED:
+      return {
+        ...state,
+        ContentAdded: action.payload
       };
 
     default:

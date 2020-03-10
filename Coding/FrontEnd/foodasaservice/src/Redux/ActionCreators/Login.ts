@@ -37,6 +37,10 @@ export const postLoginData = (email, password) => dispatch => {
       dispatch(userDataFromJwt(decoded));
       sessionStorage.setItem('userData', JSON.stringify(decoded));
       sessionStorage.setItem('userPresent', 'true');
+      sessionStorage.setItem('userId', decoded.user_id);
+      sessionStorage.setItem('userName', decoded.username);
+      sessionStorage.setItem('firstName', decoded.first_name);
+      sessionStorage.setItem('isChef', decoded.userroles.chef);
       dispatch(addLoginData(response.data));
       dispatch(addValidation(true));
       dispatch(accountLoading(false));
@@ -52,6 +56,10 @@ export const logOut = () => dispatch => {
   setTimeout(() => {
     sessionStorage.removeItem('userToken');
     sessionStorage.removeItem('userData');
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('userName');
+    sessionStorage.removeItem('firstName');
+    sessionStorage.removeItem('isChef');
     dispatch(removeValidation());
     dispatch(accountLoading(false));
   }, 1500);
