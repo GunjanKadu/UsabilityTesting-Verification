@@ -95,10 +95,6 @@ const DishItem = props => {
                       {item.likes}
                     </Badge>
                   </CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </CardText>
                 </div>
               </Card>
             </NavLink>
@@ -183,10 +179,6 @@ const DishItem = props => {
                       {item.likes}
                     </Badge>
                   </CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </CardText>
                 </div>
               </Card>
             </NavLink>

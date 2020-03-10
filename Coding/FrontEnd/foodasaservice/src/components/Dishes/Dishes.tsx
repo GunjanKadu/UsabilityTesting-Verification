@@ -19,7 +19,7 @@ const Dish = props => {
   };
 
   return (
-    <div style={{ position: 'relative', top: '13%' }}>
+    <div style={{ position: 'relative', top: '13%', fontSize: 11 }}>
       <div className='row'>
         <div className='col-4' style={{ height: '80vh' }}>
           <SearchBar onChangeValue={handleChange} value={input} />
