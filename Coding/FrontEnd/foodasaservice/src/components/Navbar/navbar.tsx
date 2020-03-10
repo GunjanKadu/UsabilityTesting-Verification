@@ -155,7 +155,7 @@ const NavbarComponent = props => {
                 activeClassName='navbar__link--active'
                 className='navbar__link'
               >
-                Dishes
+                <span style={{ fontWeight: 400 }}>Dishes</span>{' '}
               </NavLink>
             </NavItem>
             <NavItem style={{ position: 'relative' }}>
@@ -164,7 +164,7 @@ const NavbarComponent = props => {
                 className='navbar__link'
                 to='/cart'
               >
-                Cart
+                <span style={{ fontWeight: 400 }}>Cart</span>
               </NavLink>
               {noOfCartItems && showCartAlert ? (
                 <Badge
