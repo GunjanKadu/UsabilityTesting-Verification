@@ -46,7 +46,12 @@ const DishItem = props => {
             style={{ cursor: "pointer", position: "relative" }}
           >
             <NavLink
-              activeStyle={{ color: "#dc3545", fontWeight: "bold" }}
+              activeStyle={{
+                color: "#dc3545",
+                fontWeight: "bold",
+                display: "block",
+                border: "2px solid rgb(224, 146, 153)"
+              }}
               to={`${match.url}/${item.id}`}
               style={{ textDecoration: "none", color: "black" }}
             >
@@ -56,7 +61,8 @@ const DishItem = props => {
                   backgroundColor: "white",
                   marginBottom: "4px",
                   borderRadius: "4px",
-                  height: "100px"
+                  height: "100px",
+                  border: "4px solid #ebebeb"
                 }}
               >
                 <img
@@ -197,11 +203,7 @@ const DishItem = props => {
         //Rendering Each Cuisines for Dish
         const CuisinesNames = () => {
           return cuisineOfEachDish.map(name => {
-            return (
-              <span key={name.id}>
-                {name.name} {""} {""}{" "}
-              </span>
-            );
+            return <span key={name.id}>{name.name} &nbsp;</span>;
           });
         };
 
@@ -211,7 +213,12 @@ const DishItem = props => {
             style={{ cursor: "pointer", position: "relative" }}
           >
             <NavLink
-              activeStyle={{ color: "#dc3545", fontWeight: "bold" }}
+              activeStyle={{
+                color: "#dc3545",
+                fontWeight: "bold",
+                display: "block",
+                border: "2px solid rgb(224, 146, 153)"
+              }}
               to={`${match.url}/${item.id}`}
               style={{ textDecoration: "none", color: "black" }}
             >
@@ -221,7 +228,8 @@ const DishItem = props => {
                   backgroundColor: "white",
                   marginBottom: "4px",
                   borderRadius: "4px",
-                  height: "100px"
+                  height: "100px",
+                  border: "4px solid #ebebeb"
                 }}
               >
                 <img
