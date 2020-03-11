@@ -6,6 +6,7 @@ import Home from 'components/Home/home';
 import Navbar from 'components/Navbar/navbar';
 import Dishes from 'components/Dishes/Dishes';
 import Cart from 'components/Cart/Cart';
+import { Profile } from 'components/Profile /profile';
 
 export function App() {
   return (
@@ -25,6 +26,7 @@ export function App() {
         >
           <Route path='/dishes' component={Dishes} />
           <Route path='/cart' component={Cart} />
+          <Route path='/profile' component={Profile} />
         </div>
       </Switch>
       <Redirect to='/' />
