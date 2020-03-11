@@ -190,9 +190,20 @@ const NavbarComponent = props => {
                 {loader}
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem header>Header</DropdownItem>
+                <DropdownItem>
+                  <Link
+                    to='/profile'
+                    style={{
+                      textDecoration: 'none',
+                      color: 'black',
+                      fontSize: '10'
+                    }}
+                  >
+                    My Profile{' '}
+                  </Link>
+                </DropdownItem>
                 <DropdownItem>Some Action</DropdownItem>
-                <DropdownItem disabled>Action (disabled)</DropdownItem>
+                <DropdownItem>Action (disabled)</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem
                   onClick={handleLogout}
