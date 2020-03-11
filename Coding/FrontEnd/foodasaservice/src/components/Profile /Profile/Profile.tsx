@@ -14,6 +14,7 @@ export const ProfileNameAvatar = props => {
               <div className='card-body p-0 my-3 '>
                 <h5 className='card-title h4'>{props.name}</h5>
                 <h6 className='card-subtitle mb-2 text-muted'>{props.email}</h6>
+
                 <hr className='mr-3 badge-danger' />
                 <p className='card-text '>
                   <strong>Bio: </strong>Some quick example text to build on the
