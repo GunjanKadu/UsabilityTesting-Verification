@@ -1,106 +1,190 @@
 import React, { useEffect } from 'react';
-import { Card, CardText, CardTitle, Spinner, Badge } from 'reactstrap';
-import { fetchTopCooks } from 'Redux/ActionCreators/Chefs';
+import { Spinner, Badge, Button } from 'reactstrap';
+import { fetchTopDishes } from 'Redux/ActionCreators/Dishes';
+import { fetchCuisines } from 'Redux/ActionCreators/Cuisines';
 import { connect } from 'react-redux';
-import like from 'assests/images/like.png';
-
-import './trendingCooks.css';
 
 const TrendingCooks = props => {
+  //On Mounting Fetch States
   useEffect(() => {
-    props.fetchTopCooks();
-    console.log(props.dishes.IsLoading);
+    props.fetchTopDishes();
+    props.fetchCuisines();
   }, []);
-  const chefs = props.chefs.Chefs;
 
-  const RenderCooks = () => {
-    const renderCookArray = chefs.map(item => {
+  //Global Dishes
+  let dishes = props.dishes.Dishes;
+  dishes = dishes.slice(1, 2);
+
+  //Global Cuisines Array
+  const cuisines = props.cuisines.Cuisine;
+
+  const RenderDishes = () => {
+    const renderDishArray = dishes.map(item => {
+      // Cuisines Array in Each Dish
+      const cuisinesInEachDish = item.cuisine;
+
+      //Mapping Cuisines of each Dish with the Global Cuisines Array
+      const cuisineOfEachDish = cuisinesInEachDish.map(element => {
+        const dishCuisine = cuisines.find(cuisineElement => {
+          return element === cuisineElement.id;
+        });
+        //Returning Array of Mapped Global Cuisines Array with Cuisines Array  in Each Dish
+        return dishCuisine;
+      });
+
+      //Rendering Each Cuisines for Dish
+      const CuisinesNames = () => {
+        let list_ = cuisineOfEachDish.map(name => {
+          return name.name;
+        });
+        return list_.join(', ');
+      };
+
       return (
-        <div key={item.id}>
-          <Card
-            body
-            style={{
-              backgroundColor: 'white',
-              marginBottom: '30px',
-              borderRadius: '4px',
-              height: '130px'
-            }}
-          >
-            <img
-              style={{
-                position: 'absolute',
-                left: '0px',
-                top: '0px',
-                width: '25%',
-                height: '100%'
-              }}
-              src={item.img}
-            ></img>
-            <div
-              style={{
-                width: '70%',
-                height: '90%',
-                position: 'relative',
-                left: '30%'
-              }}
-            >
-              {' '}
-              <CardTitle style={{ fontWeight: 'bold' }}>
-                <h6 style={{ color: '#dc3545' }}> {item.name}</h6>
-                <img
-                  src={like}
-                  style={{ height: '15px', width: '15px' }}
-                  alt=''
-                />
-
-                <Badge
-                  href='#'
-                  style={{ backgroundColor: '#e5e5e5', color: 'black' }}
-                >
-                  {item.likes}
-                </Badge>
-              </CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
+        <div key={item.id} className='my-1' style={{ margin: '2%' }}>
+          <div className='card border-danger '>
+            {/*<div className="card-header bg-transparent border-danger">Header</div>*/}
+            <div className='card-body text-dark'>
+              <div className='row'>
+                <div className='col'>
+                  <img
+                    src={item.img}
+                    alt=''
+                    className='col rounded img-thumbnail'
+                  />
+                </div>
+                <div className='col '>
+                  <div className='row'>
+                    <blockquote className='blockquote mb-1'>
+                      <h5 className='card-title text-danger my-1'>
+                        {item.dish_name}
+                      </h5>
+                      <footer className='blockquote-footer'>
+                        By <cite title='Source Title'>{item.chef_name}</cite>
+                      </footer>
+                      <div className='my-1'>
+                        <i
+                          className='material-icons'
+                          style={{ color: 'orange' }}
+                        >
+                          star
+                        </i>
+                        <i
+                          className='material-icons'
+                          style={{ color: 'orange' }}
+                        >
+                          star
+                        </i>
+                        <i
+                          className='material-icons'
+                          style={{ color: 'orange' }}
+                        >
+                          star
+                        </i>
+                        <i
+                          className='material-icons'
+                          style={{ color: 'orange' }}
+                        >
+                          star
+                        </i>
+                        <i
+                          className='material-icons'
+                          style={{ color: 'orange' }}
+                        >
+                          star_border
+                        </i>
+                        {item.likes}
+                      </div>
+                    </blockquote>
+                  </div>
+                  <div className='row'>
+                    <p>
+                      <b>Cuisine: </b>
+                      <CuisinesNames />.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className='row mx-2'>
+                <p className='my-1'>
+                  {/*<b>Cuisine: </b>Italian, Indian, Arabiac. <br/>*/}
+                  <b>Description: </b>
+                  {item.description}...
+                  <u>
+                    <a href='#'>view more</a>
+                  </u>
+                </p>
+                {/*<p className="card-text">Some quick example text to build on the card title and make up*/}
+                {/*    the bulk of the card's content.</p>*/}
+              </div>
             </div>
-          </Card>
+            <div className='card-footer bg-transparent border-danger'>
+              <div className='row'>
+                <div className='col'>
+                  <Button color='success' size='sm'>
+                    Vegetarian
+                  </Button>
+                </div>
+                <div className='col'>
+                  <Button color='danger' size='sm'>
+                    Spicy: {item.spicy}/5
+                  </Button>
+                </div>
+                <div className='col'>
+                  <Button color='warning' size='sm'>
+                    € {item.price}
+                  </Button>
+                </div>
+                <div className='col'>
+                  <Button color='primary' size='sm'>
+                    Add to Cart
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       );
     });
-    return <>{renderCookArray}</>;
+    return <>{renderDishArray}</>;
   };
   return (
     <div>
-      {props.chefs.IsLoading ? (
+      {props.dishes.IsLoading ? (
         <Spinner
-          style={{ width: '5rem', height: '5rem' }}
-          type='grow'
+          style={{
+            width: '3.5rem',
+            height: '3.5rem',
+            position: 'relative',
+            left: '50%',
+            top: '18vh'
+          }}
           color='danger'
         />
       ) : (
         <div>
-          <h3 style={{ position: 'relative', left: '8%', top: '-5%' }}>
-            <Badge color='danger'>Featured Cooks</Badge>
-          </h3>
-          <RenderCooks />
+          <RenderDishes />
         </div>
       )}
     </div>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     dishes: state.topDish,
-    chefs: state.topChef
+    chefs: state.topChef,
+    cuisines: state.cuisine
   };
 };
+
 const mapDispatchToProps = dispatch => {
   return {
-    fetchTopCooks: () => {
-      dispatch(fetchTopCooks());
+    fetchTopDishes: () => {
+      dispatch(fetchTopDishes());
+    },
+    fetchCuisines: () => {
+      dispatch(fetchCuisines());
     }
   };
 };
