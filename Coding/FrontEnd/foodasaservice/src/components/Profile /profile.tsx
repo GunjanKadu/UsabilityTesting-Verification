@@ -2,7 +2,7 @@ import React from 'react';
 import { ProfileNameAvatar } from 'components/Profile /Profile/Profile';
 import { PasswordCard } from 'components/Profile /ProfilePassword/ProfilePassword';
 import { ProfileAddress } from 'components/Profile /ProfileAddress/ProfileAddress';
-import { ChefProfile } from 'components/Profile /ChefProfile/chefProfile';
+import ChefProfile from 'components/Profile /ChefProfile/chefProfile';
 
 export const Profile = () => {
   const userName = sessionStorage.getItem('userName');

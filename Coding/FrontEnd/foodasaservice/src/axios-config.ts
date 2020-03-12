@@ -8,3 +8,6 @@ export const registerURL =
 
 export const postCartDataURL =
   'https://cors-anywhere.herokuapp.com/foodnextdoor1.herokuapp.com/api/cart/';
+
+export const becomeAChefUrl =
+  'https://foodnextdoor1.herokuapp.com/api/user-to-chef/';

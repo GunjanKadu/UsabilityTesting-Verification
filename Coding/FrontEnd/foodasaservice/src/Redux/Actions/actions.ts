@@ -43,3 +43,8 @@ export const ENABLE_CART_ALERT = 'ENABLE_CART_ALERT';
 export const ADD_PRICE_TO_CART = 'ADD_PRICE_TO_CART';
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART';
 export const CONTENT_ADDED = 'CONTENT_ADDED';
+
+////*********************CHEF****************************//
+export const BECOME_A_CHEF = 'BECOME_A_CHEF';
+export const IS_CHEF = 'IS_CHEF';
+export const IS_BECOMING_A_CHEF_LOADING = 'IS_BECOMING_A_CHEF_LOADING';

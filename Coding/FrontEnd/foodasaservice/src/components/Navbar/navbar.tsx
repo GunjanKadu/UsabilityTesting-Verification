@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import {
@@ -114,6 +115,9 @@ const NavbarComponent = props => {
 
   const handleLogout = () => {
     props.logOut();
+    props.history.push({
+      pathname: '/'
+    });
     LogoutSuccess();
   };
   const validated = props.account.isValidated;
@@ -239,4 +243,6 @@ const mapStateToProps = state => {
     cart: state.cart
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarComponent);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(NavbarComponent)
+);

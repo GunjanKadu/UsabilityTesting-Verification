@@ -8,7 +8,9 @@ export const Account = (
     UserDataJwt: [],
     isValidated: false,
     isSuccessfullyAdded: false,
-    signUpError: ''
+    signUpError: '',
+    isChef: false,
+    becomingAChefLoading: false
   },
   action
 ) => {
@@ -51,5 +53,12 @@ export const Account = (
     //LOADING
     case ActionTypes.ACCOUNT_LOADING:
       return { ...state, Loading: action.payload };
+
+    ////CHEF
+    case ActionTypes.IS_BECOMING_A_CHEF_LOADING:
+      return { ...state, becomingAChefLoading: action.payload };
+
+    case ActionTypes.IS_CHEF:
+      return { ...state, isChef: action.payload };
   }
 };
