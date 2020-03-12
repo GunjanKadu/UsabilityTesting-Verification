@@ -3,7 +3,6 @@ import { Button } from 'reactstrap';
 
 export const ChefProfile = props => {
   const isChef = sessionStorage.getItem('isChef');
-  console.log(typeof isChef);
   return (
     <div className='row my-1'>
       {isChef == 'false' ? (

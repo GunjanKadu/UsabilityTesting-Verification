@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Card, CardText, CardTitle, Badge, Button, Spinner } from 'reactstrap';
 import { useAlert } from 'react-alert';
 
+import ChefProfile from 'components/Dishes/DishDetail/ChefDetails/chefDetails';
 import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 import { DetailsToCart, EnableCartAlert } from 'Redux/ActionCreators/Cart';
 import like from 'assets/images/like.png';
@@ -139,7 +140,6 @@ const DishDetail = props => {
             >
               <Card
                 style={{
-                  border: '3px solid pink',
                   padding: '5px'
                 }}
               >
@@ -148,7 +148,7 @@ const DishDetail = props => {
                   style={{
                     backgroundColor: 'white',
                     padding: '5px',
-                    fontWeight: 'bold'
+                    fontWeight: '500'
                   }}
                 >
                   {dishDetail.description}

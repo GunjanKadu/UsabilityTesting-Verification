@@ -7,12 +7,18 @@ import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 import like from 'assets/images/like.png';
 
 const DishItem = props => {
-  const { match, inputValue } = props;
+  const { match, inputValue, searchParams } = props;
+  let toBeSearched;
 
   useEffect(() => {
     props.fetchAllDishes();
   }, []);
 
+  if (searchParams !== '' && inputValue == '') {
+    toBeSearched = searchParams;
+  } else {
+    toBeSearched = inputValue;
+  }
   const listOfAllDishes = props.allDishes.DishList;
 
   //Global Cuisines Array
@@ -20,7 +26,7 @@ const DishItem = props => {
 
   const RenderDishesItems = () => {
     const renderDishItems = listOfAllDishes.map(item => {
-      if (!inputValue) {
+      if (!toBeSearched) {
         // Cuisines Array in Each Dish
         const cuisinesInEachDish = item.cuisine;
 
@@ -183,10 +189,9 @@ const DishItem = props => {
             </NavLink>
           </div>
         );
-      }
-      if (
-        inputValue !== '' &&
-        item.dish_name.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1
+      } else if (
+        toBeSearched !== '' &&
+        item.dish_name.toLowerCase().indexOf(toBeSearched.toLowerCase()) !== -1
       ) {
         // Cuisines Array in Each Dish
         const cuisinesInEachDish = item.cuisine;

@@ -189,29 +189,31 @@ const NavbarComponent = props => {
               >
                 {loader}
               </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>
-                  <Link
-                    to='/profile'
-                    style={{
-                      textDecoration: 'none',
-                      color: 'black',
-                      fontSize: '10'
-                    }}
+              <div style={{ position: 'absolute', right: '183%', top: '10%' }}>
+                <DropdownMenu>
+                  <DropdownItem>
+                    <Link
+                      to='/profile'
+                      style={{
+                        textDecoration: 'none',
+                        color: 'black',
+                        fontSize: '10'
+                      }}
+                    >
+                      My Profile{' '}
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>Some Action</DropdownItem>
+                  <DropdownItem>Action (disabled)</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem
+                    onClick={handleLogout}
+                    style={{ color: '#dc3545' }}
                   >
-                    My Profile{' '}
-                  </Link>
-                </DropdownItem>
-                <DropdownItem>Some Action</DropdownItem>
-                <DropdownItem>Action (disabled)</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem
-                  onClick={handleLogout}
-                  style={{ color: '#dc3545' }}
-                >
-                  Logout
-                </DropdownItem>
-              </DropdownMenu>
+                    Logout
+                  </DropdownItem>
+                </DropdownMenu>
+              </div>
             </Dropdown>
           ) : (
             <Login buttonLabel='Login' title='Login' />
