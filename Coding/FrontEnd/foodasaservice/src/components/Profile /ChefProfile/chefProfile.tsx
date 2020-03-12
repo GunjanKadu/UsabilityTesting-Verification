@@ -78,13 +78,13 @@ const ChefProfile = props => {
                   </div>
                   <div className='col'>
                     <div className='card-body p-0 my-3 '>
-                      <p className='card-text mb-1 text-secondary'>
-                        Congrats You Are Now A Chef.{' '}
-                      </p>
                       <p className='card-text '>
                         You Can Now Sell food online.
                       </p>
-                      <hr className='mr-3 badge-danger' />
+                      <hr className='mr-3 badge-danger border-danger' />
+                      <p className='card-text mb-1 text-danger'>
+                        Congrats You Are Now A Chef.{' '}
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -42,7 +42,9 @@ const Home = () => {
         }}
       >
         <h2 style={{ position: 'relative', left: '41%', top: '-5%' }}>
-          <Badge color='danger'>How We Work?</Badge>
+          <Badge color='danger' className='work'>
+            How We Work?
+          </Badge>
         </h2>
         <div className='row'>
           <div className='working'>

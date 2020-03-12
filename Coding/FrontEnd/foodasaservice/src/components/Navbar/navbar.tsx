@@ -26,6 +26,7 @@ import navIcon from 'assets/images/navIcon.png';
 
 import './navbar.css';
 const NavbarComponent = props => {
+  const userName = sessionStorage.getItem('firstName');
   const isChef = sessionStorage.getItem('isChef');
   //DropDown
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -44,7 +45,9 @@ const NavbarComponent = props => {
     );
   const LoginSuccess = () =>
     alert.show(
-      <div style={{ fontSize: '14px' }}>You Have Logged In Successfully</div>,
+      <div style={{ fontSize: '14px' }}>
+        Hello {userName} You Have Logged In Successfully
+      </div>,
       {
         timeout: 3000,
         type: 'success',
