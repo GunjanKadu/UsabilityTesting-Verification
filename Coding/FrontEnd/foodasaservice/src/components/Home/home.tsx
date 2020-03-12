@@ -18,7 +18,7 @@ const Home = () => {
         </div>
         <img className='HomeDish' src={HomePageImage} alt='Home Dish' />
       </div>
-      <div className='container' style={{ marginTop: '-10%' }}>
+      <div className='container' style={{ marginTop: '-10%', height: '80vh' }}>
         <h2 style={{ position: 'relative', left: '41%', top: '-5%' }}>
           <Badge color='danger'>Featured Dishes</Badge>
         </h2>
@@ -31,7 +31,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className='container'>
+      <div className='container' style={{ position: 'relative', top: '2%' }}>
+        <h2 style={{ position: 'relative', left: '41%', top: '-5%' }}>
+          <Badge color='danger'>How We Work?</Badge>
+        </h2>
         <div className='row'>
           <div className='working'>
             <Working />
