@@ -1,10 +1,19 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Card, CardText, CardTitle, Badge, Button, Spinner } from 'reactstrap';
-import { useAlert } from 'react-alert';
-
-import ChefProfile from 'components/Dishes/DishDetail/ChefDetails/chefDetails';
+import {
+  Card,
+  CardText,
+  CardTitle,
+  Badge,
+  Button,
+  Spinner,
+  CardBody,
+  CardSubtitle,
+  CardImg,
+  Row,
+  Col
+} from 'reactstrap';
 import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 import { DetailsToCart, EnableCartAlert } from 'Redux/ActionCreators/Cart';
 import like from 'assets/images/like.png';
@@ -59,7 +68,7 @@ const DishDetail = props => {
           body
           style={{
             backgroundColor: 'white',
-            marginBottom: '5px',
+            marginBottom: '20px',
             borderRadius: '4px',
             height: '100%',
             border: '4px solid #ebebeb'
@@ -140,6 +149,7 @@ const DishDetail = props => {
             >
               <Card
                 style={{
+                  border: '1px solid #dc3545',
                   padding: '5px'
                 }}
               >
@@ -148,13 +158,54 @@ const DishDetail = props => {
                   style={{
                     backgroundColor: 'white',
                     padding: '5px',
-                    fontWeight: '500'
+                    fontWeight: '500',
+                    marginBottom: '20px'
                   }}
                 >
                   {dishDetail.description}
                 </CardText>
               </Card>
             </CardText>
+            <div style={{ position: 'relative', top: '50vh' }}>
+              <Card
+                style={{
+                  border: '1px solid #dc3545',
+                  width: '50%',
+                  height: '21vh',
+                  overflow: 'hidden'
+                }}
+              >
+                <Row>
+                  <Col sm={4}>
+                    <CardImg
+                      top
+                      style={{
+                        width: '90px',
+                        height: '90px',
+                        position: 'relative',
+                        top: '14%',
+                        left: '22%'
+                      }}
+                      src='https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png'
+                      alt='Card image cap'
+                    />
+                  </Col>
+                  <Col>
+                    <CardBody>
+                      <CardTitle style={{ fontWeight: 'bold' }}>
+                        Made By
+                      </CardTitle>
+                      <CardSubtitle>Chef: {dishDetail.chef_name}</CardSubtitle>
+                      <CardText style={{ fontSize: '9' }}>
+                        I am a person who is positive about every aspect of
+                        life. There are many things I like to do, to see, and to
+                        experience. I like to cook & I like to write.
+                      </CardText>
+                    </CardBody>
+                  </Col>
+                </Row>
+              </Card>
+            </div>
           </div>
         </Card>
       ) : (
