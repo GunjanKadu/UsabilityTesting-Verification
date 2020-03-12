@@ -47,6 +47,17 @@ export const Cart = (
         ...state,
         ContentAdded: action.payload
       };
+    case ActionTypes.REMOVE_PRICE_FROM_CART:
+      return {
+        ...state,
+        Price: state.Price - action.payload
+      };
+    case ActionTypes.ORDER_CONTENT:
+      return {
+        ...state,
+        CartContent: [],
+        Price: 0
+      };
 
     default:
       return state;

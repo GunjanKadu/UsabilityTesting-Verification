@@ -89,9 +89,6 @@ const NavbarComponent = props => {
       sessionStorage.getItem('userPresent')
     ) {
       LoginSuccess();
-      // setTimeout(() => {
-      //   LoginSuccessWelcome();
-      // }, 1000);
 
       sessionStorage.removeItem('userPresent');
     }

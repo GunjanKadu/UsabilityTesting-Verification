@@ -41,8 +41,10 @@ export const ADD_DETAILS_TO_CART_FAILED = 'ADD_DETAILS_TO_CART_FAILED';
 export const DISABLE_CART_ALERT = 'DISABLE_CART_ALERT';
 export const ENABLE_CART_ALERT = 'ENABLE_CART_ALERT';
 export const ADD_PRICE_TO_CART = 'ADD_PRICE_TO_CART';
+export const REMOVE_PRICE_FROM_CART = 'REMOVE_PRICE_FROM_CART';
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART';
 export const CONTENT_ADDED = 'CONTENT_ADDED';
+export const ORDER_CONTENT = 'ORDER_CONTENT';
 
 ////*********************CHEF****************************//
 export const BECOME_A_CHEF = 'BECOME_A_CHEF';

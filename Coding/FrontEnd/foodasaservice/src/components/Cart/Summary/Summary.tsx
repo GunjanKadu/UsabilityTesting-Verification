@@ -1,10 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Toast, ToastBody, ToastHeader, Row, Col, Badge } from 'reactstrap';
-import { RemoveItemFromCart } from 'Redux/ActionCreators/Cart';
+import { Toast, ToastBody, ToastHeader, Row, Badge, Col } from 'reactstrap';
+import {
+  RemoveItemFromCart,
+  RemovePriceFromCart,
+  OrderedContent
+} from 'Redux/ActionCreators/Cart';
+import { useAlert } from 'react-alert';
+
 const Summary = props => {
   const orderedItems = props.cart.CartContent;
   const price = props.cart.Price;
+
+  const alert = useAlert();
+
+  const OrderPlaced = () =>
+    alert.show(
+      <div style={{ fontSize: '14px' }}>
+        Your Order Have Been Placed Successfully
+      </div>,
+      {
+        timeout: 5000,
+        type: 'success',
+        transition: 'fade'
+      }
+    );
 
   const removeHandler = id => {
     console.log('clicked');
@@ -42,7 +62,10 @@ const Summary = props => {
                         top: '-6%',
                         cursor: 'pointer'
                       }}
-                      onClick={() => removeHandler(item.dishId)}
+                      onClick={() => {
+                        removeHandler(item.dishId);
+                        props.removePriceFromCart(item.price);
+                      }}
                     >
                       X
                     </Badge>
@@ -119,9 +142,26 @@ const Summary = props => {
       <Row style={{ marginBottom: '2%' }}>
         <Col sm={12}>
           <Toast style={{ border: '1px solid #c82333' }}>
-            <button style={{ width: '100%' }} className='btn btn-danger'>
-              Order
-            </button>
+            {props.cart.CartContent.length > 0 ? (
+              <button
+                style={{ width: '100%' }}
+                className='btn btn-danger'
+                onClick={() => {
+                  OrderPlaced();
+                  props.orderedContent();
+                }}
+              >
+                Order
+              </button>
+            ) : (
+              <button
+                style={{ width: '100%' }}
+                disabled
+                className='btn btn-danger'
+              >
+                Order
+              </button>
+            )}
           </Toast>
         </Col>
       </Row>
@@ -141,6 +181,12 @@ const mapDispatchToProps = dispatch => {
   return {
     removeItemFromCart: value => {
       dispatch(RemoveItemFromCart(value));
+    },
+    removePriceFromCart: value => {
+      dispatch(RemovePriceFromCart(value));
+    },
+    orderedContent: () => {
+      dispatch(OrderedContent());
     }
   };
 };

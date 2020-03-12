@@ -52,8 +52,15 @@ export const RemoveItemFromCart = value => dispatch => {
   dispatch(RemoveItem(value));
 };
 
+export const RemovePriceFromCart = value => dispatch => {
+  dispatch(removePriceFromCart(value));
+};
+
 export const EnableCartAlert = () => dispatch => {
   dispatch(EnableAlert());
+};
+export const OrderedContent = () => dispatch => {
+  dispatch(OrderContent());
 };
 
 //********************************************** */
@@ -73,6 +80,11 @@ const AddDetailsToCartFailed = value => {
   return {
     type: ActionTypes.ADD_DETAILS_TO_CART_FAILED,
     payload: value
+  };
+};
+const OrderContent = () => {
+  return {
+    type: ActionTypes.ORDER_CONTENT
   };
 };
 
@@ -98,6 +110,12 @@ const AddDetailsToCart = value => {
 const AddPriceToCart = value => {
   return {
     type: ActionTypes.ADD_PRICE_TO_CART,
+    payload: value
+  };
+};
+const removePriceFromCart = value => {
+  return {
+    type: ActionTypes.REMOVE_PRICE_FROM_CART,
     payload: value
   };
 };
