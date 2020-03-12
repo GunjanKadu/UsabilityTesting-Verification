@@ -17,25 +17,24 @@ import {
 import { fetchAllDishes } from 'Redux/ActionCreators/Dishes';
 import { DetailsToCart, EnableCartAlert } from 'Redux/ActionCreators/Cart';
 import like from 'assets/images/like.png';
+import { useAlert } from 'react-alert';
 
 const DishDetail = props => {
   useEffect(() => {}, [props.cart.ContentAdded]);
   const allDishes = props.allDishes.DishList;
   const { match } = props;
   const userId = sessionStorage.getItem('userId');
-  // const alert = useAlert();
-  // const AddedToCartSuccess = name => {
-  //   if (props.cart.ContentAdded) {
-  //     alert.show(
-  //       <div style={{ fontSize: '14px' }}>{name} Has Been Added To Cart.</div>,
-  //       {
-  //         timeout: 3000,
-  //         type: 'success',
-  //         transition: 'fade'
-  //       }
-  //     );
-  //   }
-  // };
+  const alert = useAlert();
+  const AddedToCartSuccess = name => {
+    alert.show(
+      <div style={{ fontSize: '14px' }}>{name} Has Been Added To Cart.</div>,
+      {
+        timeout: 3000,
+        type: 'success',
+        transition: 'fade'
+      }
+    );
+  };
 
   let dishDetail;
 
@@ -126,7 +125,7 @@ const DishDetail = props => {
                       dishDetail.dish_name,
                       dishDetail.price
                     ),
-                    // AddedToCartSuccess(dishDetail.dish_name),
+                    AddedToCartSuccess(dishDetail.dish_name),
                     props.enableCartAlert()
                   );
                 }}

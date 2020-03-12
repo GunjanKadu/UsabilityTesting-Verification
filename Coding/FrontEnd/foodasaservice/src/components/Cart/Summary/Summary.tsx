@@ -7,16 +7,18 @@ const Summary = props => {
   const price = props.cart.Price;
 
   const removeHandler = id => {
+    console.log('clicked');
     let cartContent = props.cart.CartContent.filter(item => {
-      return item.id !== id;
+      return item.dishId !== id;
     });
+    console.log(cartContent);
     props.removeItemFromCart(cartContent);
   };
   const RenderItems = () => {
     if (orderedItems.length > 0) {
       return orderedItems.map(item => {
         return (
-          <div key={item.id}>
+          <div key={item.dishId}>
             <ToastBody style={{ position: 'relative' }}>
               <Row>
                 <Col sm={3}>
@@ -40,7 +42,7 @@ const Summary = props => {
                         top: '-6%',
                         cursor: 'pointer'
                       }}
-                      onClick={() => removeHandler(item.id)}
+                      onClick={() => removeHandler(item.dishId)}
                     >
                       X
                     </Badge>
