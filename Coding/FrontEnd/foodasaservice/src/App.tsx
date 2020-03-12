@@ -7,7 +7,7 @@ import Navbar from 'components/Navbar/navbar';
 import Dishes from 'components/Dishes/Dishes';
 import Cart from 'components/Cart/Cart';
 import { Profile } from 'components/Profile /profile';
-
+import { AddDish } from 'components/AddDish/AddDish';
 export function App() {
   return (
     <div className='App'>
@@ -27,6 +27,7 @@ export function App() {
           <Route path='/dishes' component={Dishes} />
           <Route path='/cart' component={Cart} />
           <Route path='/profile' component={Profile} />
+          <Route path='/addDish' component={AddDish} />
         </div>
       </Switch>
       <Redirect to='/' />

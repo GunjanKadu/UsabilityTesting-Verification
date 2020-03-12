@@ -26,6 +26,7 @@ import navIcon from 'assets/images/navIcon.png';
 
 import './navbar.css';
 const NavbarComponent = props => {
+  const isChef = sessionStorage.getItem('isChef');
   //DropDown
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropDown = () => setDropdownOpen(prevState => !prevState);
@@ -150,6 +151,18 @@ const NavbarComponent = props => {
             style={{ marginRight: '40px', fontWeight: 'bold' }}
             navbar
           >
+            {validated && isChef == 'true' ? (
+              <NavItem>
+                <NavLink
+                  to='/addDish'
+                  activeClassName='navbar__link--active'
+                  className='navbar__link'
+                >
+                  <span style={{ fontWeight: 400 }}>Add Dish</span>{' '}
+                </NavLink>
+              </NavItem>
+            ) : null}
+
             <NavItem>
               <NavLink
                 to='/dishes'
