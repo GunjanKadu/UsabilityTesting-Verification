@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+flask = "*"
+django = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
+django-rest-email-auth = "*"
+django-rest-auth = "*"
+djangorestframework-jwt = "*"
+dateparser = "*"
+django-rest-swagger = "*"
+gunicorn = "*"
+django-email-utils = "*"
+whitenoise = "*"
+django-cors-headers = "*"
+django-autofixture = "*"
+six = "*"
+faker = "*"
+psycopg2 = "*"
+
+[requires]
+python_version = "3.7"
