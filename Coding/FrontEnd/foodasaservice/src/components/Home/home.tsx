@@ -37,8 +37,7 @@ const Home = () => {
         style={{
           position: 'relative',
           top: '2%',
-          height: '80vh',
-          marginBottom: '10%'
+          height: '60vh'
         }}
       >
         <h2 style={{ position: 'relative', left: '41%', top: '-5%' }}>
@@ -53,7 +52,7 @@ const Home = () => {
         </div>
       </div>
       <div
-        className='container'
+        className='container-fluid'
         style={{ position: 'relative', top: '4%', width: '100vw' }}
       >
         <div className='row'>

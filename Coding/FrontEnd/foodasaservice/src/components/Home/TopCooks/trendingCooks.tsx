@@ -13,7 +13,7 @@ const TrendingCooks = props => {
 
   //Global Dishes
   let dishes = props.dishes.Dishes;
-  dishes = dishes.slice(1, 2);
+  dishes = dishes.slice(0, 2);
 
   //Global Cuisines Array
   const cuisines = props.cuisines.Cuisine;
@@ -41,8 +41,12 @@ const TrendingCooks = props => {
       };
 
       return (
-        <div key={item.id} className='my-1' style={{ margin: '2%' }}>
-          <div className='card border-danger '>
+        <div key={item.id} className='my-1' style={{ margin: '5%' }}>
+          <div
+            className='card border-danger '
+            mb-2
+            style={{ height: 'fit-content' }}
+          >
             {/*<div className="card-header bg-transparent border-danger">Header</div>*/}
             <div className='card-body text-dark'>
               <div className='row'>
@@ -105,7 +109,15 @@ const TrendingCooks = props => {
                   </div>
                 </div>
               </div>
-              <div className='row mx-2'>
+              <div
+                className='row mx-2'
+                style={{
+                  width: '100%',
+                  height: '50px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis'
+                }}
+              >
                 <p className='my-1'>
                   {/*<b>Cuisine: </b>Italian, Indian, Arabiac. <br/>*/}
                   <b>Description: </b>

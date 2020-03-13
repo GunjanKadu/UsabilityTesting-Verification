@@ -14,7 +14,7 @@ const TrendingDishes = props => {
 
   //Global Dishes
   let dishes = props.dishes.Dishes;
-  dishes = dishes.slice(0, 1);
+  dishes = dishes.slice(2, 4);
 
   //Global Cuisines Array
   const cuisines = props.cuisines.Cuisine;
@@ -106,7 +106,14 @@ const TrendingDishes = props => {
                   </div>
                 </div>
               </div>
-              <div className='row mx-2'>
+              <div
+                className='row mx-2'
+                style={{
+                  height: '50px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis'
+                }}
+              >
                 <p className='my-1'>
                   {/*<b>Cuisine: </b>Italian, Indian, Arabiac. <br/>*/}
                   <b>Description: </b>

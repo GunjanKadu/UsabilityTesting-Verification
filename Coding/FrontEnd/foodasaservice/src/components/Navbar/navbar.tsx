@@ -220,8 +220,7 @@ const NavbarComponent = props => {
                       My Profile{' '}
                     </Link>
                   </DropdownItem>
-                  <DropdownItem>Some Action</DropdownItem>
-                  <DropdownItem>Action (disabled)</DropdownItem>
+
                   <DropdownItem divider />
                   <DropdownItem
                     onClick={handleLogout}
